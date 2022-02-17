@@ -1,17 +1,20 @@
 <template>
-  <div class="blobs">
-    <div class="blob">2</div>
-    <div class="blob s2">1</div>
+  <!-- test1 -->
+  <div class="container">
+    <div class="blobs">
+      <div class="blob">2</div>
+      <div class="blob s2">1</div>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="46" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10" result="goo" />
+          <feBlend in="SourceGraphic" in2="goo" />
+        </filter>
+      </defs>
+    </svg>
   </div>
-  <svg xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <filter id="goo">
-        <feGaussianBlur in="SourceGraphic" stdDeviation="46" result="blur" />
-        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10" result="goo" />
-        <feBlend in="SourceGraphic" in2="goo" />
-      </filter>
-    </defs>
-  </svg>
 </template>
 
 <script>
@@ -35,6 +38,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: black;
+}
 .blobs {
   filter: url('#goo');
   position: absolute;
@@ -57,7 +69,10 @@ export default {
   margin-left: -50px;
 }
 .s2 {
+  position: absolute;
   left: 260px;
-  background: rgb(217, 255, 0);
+  background: rgb(255, 255, 255);
+  mix-blend-mode: difference;
+  color: black;
 }
 </style>

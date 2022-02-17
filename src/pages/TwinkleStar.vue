@@ -1,4 +1,5 @@
 <template>
+  <!-- test2 -->
   <div class="stars" />
   <div class="twinkling" />
 </template>
