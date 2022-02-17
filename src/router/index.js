@@ -6,7 +6,7 @@ import TwinkleStar from '@/pages/TwinkleStar'
 import ReboundImg from '@/pages/ReboundImg'
 import WaveBtn from '@/pages/WaveBtn'
 import Unveil from '@/pages/Unveil'
-import Test6 from '@/pages/Test6'
+import SpreadText from '@/pages/SpreadText'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -48,8 +48,8 @@ const router = createRouter({
     },
     {
       path: '/test6',
-      name: 'Test6',
-      component: Test6
+      name: 'SpreadText',
+      component: SpreadText
     }
   ]
 })
