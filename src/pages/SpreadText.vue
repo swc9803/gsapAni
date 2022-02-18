@@ -3,7 +3,6 @@
   <div class="container">
     <h1>Hi I am Sung Woo</h1>
   </div>
-  <p>hi</p>
 </template>
 
 <script>
@@ -38,25 +37,24 @@ export default {
     transform: translate(0, -50%);
     top: 50%;
     display: inline-block;
-    color: transparent;
+    color: rgba(0, 0, 0, 0);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 5rem;
     font-weight: 700;
     &::after {
-      content: 'Hi I am Sung Woo';
+      content: 'Hi I am SungWoo';
       position: absolute;
       left: 0;
       width: 100%;
       height: 100%;
       z-index: -1;
-      background: linear-gradient(35deg, rgba(255, 255, 255, 0) 10%, #fff 40%, rgba(255, 255, 255, 0) 90%, rgba(255, 255, 255, 0 ) 100%);
-      background-size: 15px 1px;
-      color: rgba(255, 255, 255, 0);
+      background: linear-gradient(35deg, rgba(0, 0, 0, 0) 10%, #fff 40%, rgba(0, 0, 0, 0) 90%, rgba(0, 0, 0, 0 ) 100%);
+      background-size: 15px 15px;
+      color: rgba(0, 0, 0, 0);
       background-clip: text;
       animation: shad 100s infinite linear;
-      filter: blur(8px);
-      transform: scale(1.3);
-      letter-spacing: -10px;
+      filter: blur(5px);
+      letter-spacing: 1px;
       text-shadow: none;
       @keyframes shad {
         0% {

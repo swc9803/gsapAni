@@ -7,6 +7,8 @@ import ReboundImg from '@/pages/ReboundImg'
 import WaveBtn from '@/pages/WaveBtn'
 import Unveil from '@/pages/Unveil'
 import SpreadText from '@/pages/SpreadText'
+import BlobText from '@/pages/BlobText'
+import Test8 from '@/pages/Test8'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -50,6 +52,16 @@ const router = createRouter({
       path: '/test6',
       name: 'SpreadText',
       component: SpreadText
+    },
+    {
+      path: '/test7',
+      name: 'BlobText',
+      component: BlobText
+    },
+    {
+      path: '/test8',
+      name: 'Test8',
+      component: Test8
     }
   ]
 })

@@ -11,7 +11,7 @@ export default {
   setup () {
     onMounted(() => {
       gsap.to('p', {
-        yPercent: 100, duration: 1, repeat: -1, ease: 'none'
+        yPercent: 100, duration: 1, yoyo: true, repeat: -1, ease: 'none'
       })
     })
   }

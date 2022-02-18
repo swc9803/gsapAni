@@ -1,9 +1,10 @@
 <template>
-    <!-- test4 -->
-  <a href="#">
-    <span>Button</span>
-    <div class="liquid"></div>
-  </a>
+  <!-- test4 -->
+  <div class="container">
+    <div class="wrapper">
+      <div class="liquid" />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -19,87 +20,60 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
+.container {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  height: 100%;
   background: #0c0c0c;
-}
-
-a {
-  position: relative;
-  padding: 20px 50px;
-  display: block;
-  text-decoration: none;
-  text-transform: uppercase;
-  width: 200px;
-  overflow: hidden;
-  border-radius: 40px;
-}
-
-a span {
-  position: relative;
-  color: #fff;
-  font-size: 20px;
-  font-family: Arial;
-  letter-spacing: 8px;
-  z-index: 1;
-}
-
-a .liquid {
-  position: absolute;
-  top: -80px;
-  left: 0;
-  width: 200px;
-  height: 200px;
-  background: #4973ff;
-  box-shadow: inset 0 0 50px rgba(0, 0, 0, .5);
-  transition: .5s;
-}
-
-a .liquid::after,
-a .liquid::before {
-  content: '';
-  width: 200%;
-  height: 200%;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -75%);
-  background: #000;
-}
-
-a .liquid::before {
-
-  border-radius: 45%;
-  background: rgba(20, 20, 20, 1);
-  animation: animate 5s linear infinite;
-}
-
-a .liquid::after {
-
-  border-radius: 40%;
-  background: rgba(20, 20, 20, .5);
-  animation: animate 10s linear infinite;
-}
-
-a:hover .liquid{
-  top: -120px;
-}
-
-@keyframes animate {
-  0% {
-    transform: translate(-50%, -75%) rotate(0deg);
-  }
-  100% {
-    transform: translate(-50%, -75%) rotate(360deg);
+  .wrapper {
+    position: relative;
+    padding: 40px;
+    width: 300px;
+    overflow: hidden;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 40px;
+    cursor: pointer;
+    &:hover > .liquid{
+      top: -250%;
+    }
+    .liquid {
+      position: absolute;
+      top: -100px;
+      left: 0;
+      width: 300px;
+      height: 300px;
+      background: #ffa600;
+      transition: .5s;
+      @mixin liquid-style {
+        content: '';
+        position: absolute;
+        width: 200%;
+        height: 200%;
+      }
+      &::before {
+        @include liquid-style;
+        border-radius: 45%;
+        background: rgba(20, 20, 20, 1);
+        animation: wave 5s linear infinite;
+      }
+      &::after {
+        @include liquid-style;
+        border-radius: 40%;
+        background: rgba(20, 20, 20, .5);
+        animation: wave 10s linear infinite;
+      }
+      @keyframes wave {
+        0% {
+          transform: translate(-50%, -75%) rotate(0deg);
+        }
+        100% {
+          transform: translate(-50%, -75%) rotate(360deg);
+        }
+      }
+    }
   }
 }
+
 </style>
