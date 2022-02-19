@@ -5,17 +5,20 @@
       <div @click="fall" class="yes">네!</div>
       <div @click="disappear" ref="no">아니요...</div>
     </div>
+    <span v-for="line in 40" :key="line" class="velocity" />
   </div>
 </template>
 
 <script>
 import { gsap } from 'gsap'
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 export default {
   setup () {
     const textMove = ref()
     const btn = ref()
     const no = ref()
+    const line = ref()
+
     const fall = () => {
       gsap.to(textMove.value, {
         top: '-100%',
@@ -32,6 +35,21 @@ export default {
         duration: 3,
         ease: 'expo.in'
       }, '<')
+      gsap.set('.velocity', {
+        top: 'random(100, 150)%',
+        left: 'random(0, 100)%'
+      })
+      for (var i = 0; i < 40; i++) {
+        gsap.to('.velocity', {
+          top: '-100%',
+          scaleY: 5,
+          opacity: 1,
+          transformOrigin: 'bottom',
+          duration: 2,
+          delay: 'random(3, 40)',
+          ease: 'expo'
+        }, '<')
+      }
     }
     const disappear = () => {
       gsap.to(no.value, {
@@ -42,12 +60,11 @@ export default {
         cursor: 'auto'
       })
     }
-    onMounted(() => {
-    })
     return {
       textMove,
       btn,
       no,
+      line,
       fall,
       disappear
     }
@@ -91,6 +108,13 @@ export default {
         transform: scale(1.1);
       }
     }
+  }
+  .velocity {
+    opacity: 0;
+    position: absolute;
+    width: 2px;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.8);
   }
 }
 @media screen and (max-width: 574px) {
