@@ -9,6 +9,8 @@ import Unveil from '@/pages/Unveil'
 import SpreadText from '@/pages/SpreadText'
 import BlobText from '@/pages/BlobText'
 import Test8 from '@/pages/Test8'
+import Test9 from '@/pages/Test9'
+import Test10 from '@/pages/Test10'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -62,6 +64,16 @@ const router = createRouter({
       path: '/test8',
       name: 'Test8',
       component: Test8
+    },
+    {
+      path: '/test9',
+      name: 'Test9',
+      component: Test9
+    },
+    {
+      path: '/test10',
+      name: 'Test10',
+      component: Test10
     }
   ]
 })
