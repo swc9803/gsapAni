@@ -1,5 +1,7 @@
 <template>
+  <!-- test8 -->
   <div class="container">
+    <Bubble />
     <p ref="textMove">Wanna Cool?</p>
     <div ref="btn" class="btnWrap">
       <div @click="fall" class="yes">네!</div>
@@ -12,7 +14,12 @@
 <script>
 import { gsap } from 'gsap'
 import { ref } from 'vue'
+import Bubble from '@/components/Bubble'
+
 export default {
+  components: {
+    Bubble
+  },
   setup () {
     const textMove = ref()
     const btn = ref()

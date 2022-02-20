@@ -1,7 +1,8 @@
 <template>
+  <!-- test9 -->
   <div ref="background" class="container" @mousemove="cursorMove">
-    <p ref="textMove">Enjoy Sung Beer</p>
     <Bubble />
+    <p ref="textMove">hi</p>
   </div>
 </template>
 
@@ -21,7 +22,7 @@ export default {
     const cursorMove = (e) => {
       const x = e.pageX - windowW
       const y = e.pageY - windowH
-      textMove.value.style.transform = 'translate(' + x / -10 + 'px,' + y / -10 + 'px) rotateY(' + (x / 40) + 'deg) rotateX(' + (y / 20) + 'deg)'
+      textMove.value.style.transform = 'translate(' + x / -10 + 'px,' + y / -10 + 'px) rotateY(' + (x / 20) + 'deg) rotateX(' + (y / 10) + 'deg)'
     }
     setTimeout(() => {
       textMove.value.style.opacity = 1
