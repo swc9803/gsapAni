@@ -1,15 +1,18 @@
 <template>
-  <div class="container" @mousemove="cursorMove">
-    <p ref="textMove">Wanna Cool?</p>
-    <div ref="velocity" class="velocity" />
+  <div ref="background" class="container" @mousemove="cursorMove">
+    <p ref="textMove">Enjoy Sung Beer</p>
+    <Bubble />
   </div>
 </template>
 
 <script>
-import { gsap } from 'gsap'
+import gsap from 'gsap'
 import { onMounted, ref } from 'vue'
+import Bubble from '@/components/Bubble'
+
 export default {
   setup () {
+    const background = ref()
     const velocity = ref()
     const textMove = ref()
     const windowW = outerWidth / 2
@@ -20,27 +23,27 @@ export default {
       const y = e.pageY - windowH
       textMove.value.style.transform = 'translate(' + x / -10 + 'px,' + y / -10 + 'px) rotateY(' + (x / 40) + 'deg) rotateX(' + (y / 20) + 'deg)'
     }
+    setTimeout(() => {
+      textMove.value.style.opacity = 1
+      background.value.style.pointerEvents = 'auto'
+    }, 3000)
+
     onMounted(() => {
-      gsap.fromTo(velocity.value, { top: '90%', left: 'random(0, 100)%' }, {
-        top: '-300%',
-        scaleY: 4,
-        transformOrigin: 'bottom',
-        duration: 3,
-        repeat: -1,
-        ease: 'expo.in'
-      })
-      gsap.fromTo(velocity.value, { opacity: 0 }, {
-        opacity: 1,
-        duration: 3,
-        repeat: -1,
-        ease: 'expo'
+      gsap.from(background.value, {
+        yPercent: 100,
+        duration: 0.3,
+        ease: 'none'
       })
     })
     return {
+      background,
       velocity,
       textMove,
       cursorMove
     }
+  },
+  components: {
+    Bubble
   }
 }
 </script>
@@ -52,7 +55,10 @@ export default {
   height: 100%;
   text-align: center;
   overflow: hidden;
+  background: #2d70ff;
   perspective: 400px;
+  pointer-events: none;
+  // 컴포넌트 화 할때 상위에 overflow hidden
   p {
     position: relative;
     top: 38%;
@@ -61,12 +67,14 @@ export default {
     font-size: 5rem;
     font-weight: 800;
     margin: 0;
-    color: #2d70ff;
+    color: rgb(190, 220, 255);
+    opacity: 0;
+    transition: opacity 1.5s;
     letter-spacing: 3px;
-    text-shadow: 1px 1px 1px #4d85ff,
-    1px 2px 1px #568cff,
-    1px 3px 1px #4580ff,
-    1px 4px 1px #4d85ff,
+    text-shadow: 1px 1px 1px #bed2ff,
+    1px 2px 1px #78a3ff,
+    1px 3px 1px #719eff,
+    1px 4px 1px #7da6ff,
     1px 5px 1px #4d85ff,
     1px 6px 1px #4d85ff,
     1px 7px 1px #4d85ff,
@@ -76,11 +84,32 @@ export default {
     1px 25px 35px rgba(16,16,16,0.1),
     1px 30px 60px rgba(16,16,16,0.3);
   }
-  .velocity {
+  .bubbles {
     position: absolute;
-    width: 2px;
-    height: 30px;
-    background: rgba(0, 0, 0, 0.8);
+    z-index: 2;
+    width: 10%;
+    top: 110%;
+  }
+}
+@media screen and (max-width: 900px) {
+  .container {
+    p {
+      font-size: 4rem;
+    }
+  }
+}
+@media screen and (max-width: 650px) {
+  .container {
+    p {
+      font-size: 3rem;
+    }
+  }
+}
+@media screen and (max-width: 480px) {
+  .container {
+    p {
+      font-size: 2.3rem;
+    }
   }
 }
 </style>

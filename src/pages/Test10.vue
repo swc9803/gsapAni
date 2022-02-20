@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <input type="button" style="position: absolute" id="button5" value="Click Me">
+  <div>
+
   </div>
 </template>
 

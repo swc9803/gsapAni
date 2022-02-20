@@ -3,7 +3,7 @@
     <p ref="textMove">Wanna Cool?</p>
     <div ref="btn" class="btnWrap">
       <div @click="fall" class="yes">네!</div>
-      <div @click="disappear" ref="no">아니요...</div>
+      <div @click="disappear" ref="reject">아니요...</div>
     </div>
     <span v-for="line in 40" :key="line" class="velocity" />
   </div>
@@ -16,7 +16,7 @@ export default {
   setup () {
     const textMove = ref()
     const btn = ref()
-    const no = ref()
+    const reject = ref()
     const line = ref()
 
     const fall = () => {
@@ -39,20 +39,18 @@ export default {
         top: 'random(100, 150)%',
         left: 'random(0, 100)%'
       })
-      for (var i = 0; i < 40; i++) {
-        gsap.to('.velocity', {
-          top: '-100%',
-          scaleY: 5,
-          opacity: 1,
-          transformOrigin: 'bottom',
-          duration: 2,
-          delay: 'random(3, 40)',
-          ease: 'expo'
-        }, '<')
-      }
+      gsap.to('.velocity', {
+        top: '-100%',
+        scaleY: 5,
+        opacity: 1,
+        transformOrigin: 'bottom',
+        duration: 2,
+        delay: 'random(3, 6)',
+        ease: 'expo'
+      }, '<')
     }
     const disappear = () => {
-      gsap.to(no.value, {
+      gsap.to(reject.value, {
         opacity: 0,
         yPercent: -30,
         duration: 2,
@@ -63,7 +61,7 @@ export default {
     return {
       textMove,
       btn,
-      no,
+      reject,
       line,
       fall,
       disappear
