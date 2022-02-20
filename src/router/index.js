@@ -10,7 +10,7 @@ import SpreadText from '@/pages/SpreadText'
 import BlobText from '@/pages/BlobText'
 import Test8 from '@/pages/Test8'
 import Test9 from '@/pages/Test9'
-import Test10 from '@/pages/Test10'
+import FallingToWater from '@/pages/FallingToWater'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -72,8 +72,8 @@ const router = createRouter({
     },
     {
       path: '/test10',
-      name: 'Test10',
-      component: Test10
+      name: 'FallingToWater',
+      component: FallingToWater
     }
   ]
 })

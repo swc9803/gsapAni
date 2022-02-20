@@ -1,4 +1,5 @@
 <template>
+  <!-- test10 -->
   <div class="container" @mousemove="cursorMove">
     <p ref="fallingText" class="fallingText">Wanna Cool?</p>
     <div ref="btn" class="btnWrap">
@@ -6,7 +7,9 @@
       <div @click="disappear" ref="reject">아니요...</div>
     </div>
     <span v-for="line in 40" :key="line" class="velocity" />
-    <div class="background" ref="background" />
+    <div class="background" ref="background">
+      <div class="clip" />
+    </div>
     <p ref="movingText" class="movingText">Enjoy Sung Beer</p>
     <svg v-for="bubble in 15" :key="bubble" class="bubbles" :ref="bubbleRef"
       xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 248 248">
@@ -41,8 +44,9 @@ export default {
     const btn = ref()
     const reject = ref()
     const background = ref()
-    const lineArray = ref([])
-    const bubbleRef = (el) => lineArray.value.push(el)
+    const showText = ref(false)
+    const bubbleArray = ref([])
+    const bubbleRef = (el) => bubbleArray.value.push(el)
     const movingText = ref()
     const windowW = outerWidth / 2
     const windowH = outerHeight / 2
@@ -82,17 +86,34 @@ export default {
         delay: 'random(3, 5)',
         ease: 'expo'
       }, '<')
+      gsap.to('.clip', {
+        top: '-100%',
+        duration: 1,
+        ease: 'none',
+        delay: 5.5
+      })
       gsap.to(background.value, {
         top: 0,
         duration: 0.3,
         ease: 'none',
         delay: 5.2
       })
+      gsap.from(background.value, {
+        background: '#7572ff',
+        duration: 15,
+        ease: 'none'
+      }, '<')
       createBubble()
       gsap.to(movingText.value, {
         opacity: 1,
         duration: 2,
-        delay: 7
+        delay: 7,
+        onStart () {
+          showText.value = true
+          gsap.to('.velocity', {
+            display: 'none'
+          })
+        }
       })
     }
     const disappear = () => {
@@ -108,7 +129,7 @@ export default {
     const createBubble = () => {
       const setRandomPosition = () => {
         for (var i = 0; i < 15; i++) {
-          gsap.set(lineArray.value[i], {
+          gsap.set(bubbleArray.value[i], {
             left: 'random(5, 95)%',
             scale: gsap.utils.random(0.6, 1.2)
           })
@@ -117,14 +138,14 @@ export default {
       setTimeout(() => {
         for (var i = 0; i < 15; i++) {
           setRandomPosition()
-          gsap.to(lineArray.value[i], {
-            top: '-10%',
+          gsap.to(bubbleArray.value[i], {
+            top: '-50%',
             duration: 'random(10, 15)',
             delay: 'random(1, 15)',
             ease: 'none',
             repeat: -1
           })
-          gsap.to(lineArray.value[i], {
+          gsap.to(bubbleArray.value[i], {
             xPercent: 'random(-100, 100)',
             duration: 'random(4, 5)',
             yoyo: true,
@@ -135,13 +156,14 @@ export default {
       }, 6000)
     }
     return {
-      lineArray,
+      bubbleArray,
       bubbleRef,
       fallingText,
       btn,
       reject,
       background,
       movingText,
+      showText,
       cursorMove,
       fall,
       disappear,
@@ -173,8 +195,8 @@ export default {
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100%;
+    top: 50%;
+    z-index: 7;
     div {
       cursor: pointer;
       border-radius: 0.5em;
@@ -200,11 +222,27 @@ export default {
     width: 100%;
     height: 100%;
     top: 110%;
-    background: rgb(17, 92, 255);
+    background: #0300c0;
+    .clip {
+      position: absolute;
+      transform: translate(-50%);
+      top: 0;
+      left: 50%;
+      width: 150%;
+      height: 50%;
+      clip-path: ellipse(50% 70% at 50% 30%);
+      background: white;
+    }
+  }
+  .bigBubbles {
+    position: absolute;
+    width: 7%;
+    top: 110%;
+    z-index: 5;
   }
   .movingText {
     position: relative;
-    top: -70%;
+    top: 20%;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 5rem;
     font-weight: 800;
@@ -228,10 +266,27 @@ export default {
   }
   .bubbles {
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 7%;
     top: 110%;
     z-index: 5;
+    transition: scale 2s ease-out;
+    &:hover {
+      scale: 1.2;
+    }
+  }
+  .bigBubbles {
+    position: absolute;
+    width: 7%;
+    top: 110%;
+    z-index: 5;
+  }
+}
+@media screen and (max-width: 1500px) {
+  .container {
+    .movingText {
+      top: 10%;
+      font-size: 4rem;
+    }
   }
 }
 @media screen and (max-width: 574px) {
@@ -240,7 +295,11 @@ export default {
       top: 20%;
     }
     .btnWrap {
-      top: -10%;
+      top: 35%;
+    }
+    .movingText {
+      top: 0;
+      font-size: 3rem;
     }
   }
 }
