@@ -1,30 +1,38 @@
 <template>
   <!-- test9 -->
-  <div @click="dd" class="box"></div>
+  <div class="container">
+    <Board />
+  </div>
 </template>
 
 <script>
-import gsap from 'gsap'
+// import gsap from 'gsap'
 // import { onMounted, ref } from 'vue'
+import Board from '@/pages/Board'
 
 export default {
+  components: {
+    Board
+  },
   setup () {
-    const dd = () => {
-      gsap.to('.box', {
-        rotate: '+=90'
-      })
-    }
     return {
-      dd
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.box {
-  width: 100px;
-  height: 100px;
-  background: black;
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  text-align: center;
+  p {
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    // top: 10px
+  }
 }
 </style>
