@@ -8,7 +8,7 @@ import WaveBtn from '@/pages/WaveBtn'
 import Unveil from '@/pages/Unveil'
 import SpreadText from '@/pages/SpreadText'
 import BlobText from '@/pages/BlobText'
-import Test8 from '@/pages/Test8'
+import Board from '@/pages/Board'
 import Test9 from '@/pages/Test9'
 import FallingToWater from '@/pages/FallingToWater'
 
@@ -62,8 +62,8 @@ const router = createRouter({
     },
     {
       path: '/test8',
-      name: 'Test8',
-      component: Test8
+      name: 'Board',
+      component: Board
     },
     {
       path: '/test9',

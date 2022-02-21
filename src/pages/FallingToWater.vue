@@ -11,7 +11,7 @@
       <div class="clip" />
     </div>
     <p ref="movingText" class="movingText">Enjoy Sung Beer</p>
-    <svg v-for="bubble in 15" :key="bubble" class="bubbles" :ref="bubbleRef"
+    <svg v-for="bubble in 20" :key="bubble" class="bubbles" :ref="bubbleRef"
       xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 248 248">
       <g filter="url(#bubble_f_11_2)">
         <mask id="path-1-inside-1_11_2" fill="#fff">
@@ -33,18 +33,25 @@
       </defs>
     </svg>
   </div>
+  <div v-show="dd" class="container">
+    <Board />
+  </div>
 </template>
 
 <script>
 import gsap from 'gsap'
 import { ref } from 'vue'
+import Board from '@/pages/Board'
 export default {
+  components: {
+    Board
+  },
   setup () {
     const fallingText = ref()
     const btn = ref()
     const reject = ref()
     const background = ref()
-    const showText = ref(false)
+    const dd = ref(false)
     const bubbleArray = ref([])
     const bubbleRef = (el) => bubbleArray.value.push(el)
     const movingText = ref()
@@ -109,7 +116,7 @@ export default {
         duration: 2,
         delay: 7,
         onStart () {
-          showText.value = true
+          dd.value = true
           gsap.to('.velocity', {
             display: 'none'
           })
@@ -128,7 +135,7 @@ export default {
 
     const createBubble = () => {
       const setRandomPosition = () => {
-        for (var i = 0; i < 15; i++) {
+        for (var i = 0; i < 20; i++) {
           gsap.set(bubbleArray.value[i], {
             left: 'random(5, 95)%',
             scale: gsap.utils.random(0.6, 1.2)
@@ -136,7 +143,7 @@ export default {
         }
       }
       setTimeout(() => {
-        for (var i = 0; i < 15; i++) {
+        for (var i = 0; i < 20; i++) {
           setRandomPosition()
           gsap.to(bubbleArray.value[i], {
             top: '-50%',
@@ -163,7 +170,7 @@ export default {
       reject,
       background,
       movingText,
-      showText,
+      dd,
       cursorMove,
       fall,
       disappear,
@@ -175,7 +182,7 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 100%;
   text-align: center;
