@@ -6,8 +6,6 @@
 </template>
 
 <script>
-// import gsap from 'gsap'
-// import { onMounted, ref } from 'vue'
 import Board from '@/pages/Board'
 
 export default {
@@ -15,8 +13,6 @@ export default {
     Board
   },
   setup () {
-    return {
-    }
   }
 }
 </script>
@@ -27,12 +23,5 @@ export default {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  text-align: center;
-  p {
-    position: absolute;
-    width: 100%;
-    margin: 0;
-    // top: 10px
-  }
 }
 </style>

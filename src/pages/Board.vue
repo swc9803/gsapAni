@@ -1,11 +1,11 @@
 <template>
   <!-- test8 -->
   <div class="boardWrap">
-    <svg class="board" ref="board" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" viewBox="0 0 1422 1422">
+    <svg class="board" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" viewBox="0 0 1422 1422">
       <defs>
         <path id="reuse-0" d="M711 330.3a380.7 380.7 0 0 1 329.7 571L727.5 720.5A19 19 0 0 0 711 692V330.3Z"/>
       </defs>
-      <g id="board">
+      <g ref="board">
         <circle cx="710.2" cy="711.2" r="5" fill="#838383" stroke="#595959"/>
         <g id="park">
           <path fill="url(#beer0_linear_36_599)" d="M381.3 901.3a380.7 380.7 0 0 1 329.7-571V692a19 19 0 0 0-16.5 28.5L381.3 901.3Z"/>
@@ -182,7 +182,7 @@
       <g ref="flash" filter="url(#beer31_f_36_599)">
         <path fill="#45CCF7" d="m781.7 817.7 1.4 21 5.8-20.3-3 21 10-18.7-7.2 19.8 13.5-16.1-11.2 17.9 16.7-13-14.7 15.1 19-9.2-17.5 11.8 20.5-5.1-19.6 7.9 21-.8-20.7 3.7 20.8 3.6-21.1-.7 19.6 7.9-20.5-5.1 17.5 11.8-19-9.3 14.7 15.2-16.7-13 11.2 17.9-13.5-16.2 7.2 19.8-10-18.6 3 20.9-5.8-20.3-1.4 21-1.5-21-5.8 20.3 3-21-10 18.7 7.3-19.8L761 881l11.2-18-16.6 13 14.6-15.1-19 9.3 17.6-11.8-20.5 5 19.6-7.8-21.1.7 20.8-3.6-20.8-3.7 21 .8-19.5-8 20.5 5.2-17.5-11.8 19 9.2-14.7-15.2 16.6 13-11.2-17.8 13.6 16.1-7.3-19.8 10 18.7-3-21 5.8 20.3 1.5-21Z"/>
       </g>
-      <g ref="beerCan" @click="boardAni">
+      <g ref="beerCan" @click="rotateBoard(), countPlus()">
         <path fill="#489CFF" d="m765 827 2-2.7-.4-1.3c0-.3.1-.6.4-.6 11-1.4 17.5-1.4 28.4 0 .3 0 .5.3.4.6l-.3 1.3 1.8 3.6v51.2c0 .8-.4 1.6-1.2 2-.4.2-.7.5-1 1-.3.7-1 1.2-1.8 1.3-9.1 1-14.8 1-24.2 0-.8-.1-1.5-.6-1.8-1.3-.3-.5-.6-.8-1-1a2.2 2.2 0 0 1-1.2-2v-52Z"/>
         <g>
           <path fill="#FDFF86" d="m772.4 845.8.1.5.3.4c.2 0 .3.2.5.3a28.5 28.5 0 0 0 1.4.7l.7.5.4.6c.2.2.2.5.2.8 0 .3 0 .5-.2.8 0 .2-.3.4-.5.6l-.8.4-1 .2c-.8 0-1.5-.2-2-.5-.4-.3-.7-.7-1-1.3l1.4-.6.2.6.3.4.4.3.5.1c.4 0 .6 0 .9-.2.2-.2.3-.4.3-.7l-.1-.5-.4-.3-.5-.3-.5-.3a13 13 0 0 1-.8-.5l-.7-.5-.5-.6a2 2 0 0 1 0-1.6c.1-.3.3-.5.5-.6l.8-.4a3.6 3.6 0 0 1 1.9 0c.3 0 .5.1.7.3l.5.5.2.7c0 .2 0 .4-.2.6l-.6.1c-.4 0-.6-.1-.8-.4l.1-.3v-.4l-.3-.2a.9.9 0 0 0-.5-.1 1 1 0 0 0-.4 0 .8.8 0 0 0-.5.6v.3Zm9 0v5.5h-1.6v-.3a2 2 0 0 1-.6.3 2 2 0 0 1-.7.1 2 2 0 0 1-.8-.1 1.7 1.7 0 0 1-1-1.1v-3.5l-.3-.2 1.8-.6v3.6c0 .3 0 .6.2.7.1.2.3.3.6.3l.4-.1c.2 0 .3-.2.4-.3v-3.5l-.2-.1 1.7-.6Zm2.3 0v.5l.6-.2h.6l1 .1.6.5.3.6v4h-1.4V848l-.2-.8-.7-.2h-.4a2 2 0 0 0-.4.2v4.1h-1.5v-4.7l-.2-.1 1.7-.6Zm8.3.5s-.2 0-.3.2l.5.5.2.8c0 .3 0 .5-.2.8l-.5.5-.8.4h-.9a5.4 5.4 0 0 0-.6.1h-.2v.2c0 .1 0 .2.2.2l.7.2a131 131 0 0 1 1.8.2l.7.3.2.6c0 .3 0 .5-.2.7l-.6.4-.9.3a5 5 0 0 1-2.7-.2 2 2 0 0 1-.6-.4.7.7 0 0 1-.1-.9 1.5 1.5 0 0 1 .4-.5l.3-.1-.5-.3-.1-.4c0-.2 0-.3.2-.5l.6-.3c-.3 0-.5-.2-.7-.5l-.2-.8a1.6 1.6 0 0 1 .8-1.4l.7-.3a4 4 0 0 1 1.5 0l.6.1c.1-.2.3-.4.6-.5l.6-.2.5.2.2.5c0 .2 0 .4-.2.5l-.4.1c-.2 0-.3 0-.4-.2v-.2h-.2Zm-2.5 4.5-.3.3v.5l.3.1.4.1h1.1l.3-.4c0-.1 0-.2-.2-.3l-.5-.2a6 6 0 0 0-.7 0l-.4-.1Zm.6-2.2c.2 0 .4 0 .5-.2.2 0 .3-.3.3-.6s0-.5-.3-.6a1 1 0 0 0-.5-.2 1 1 0 0 0-.7.2l-.2.6c0 .3 0 .5.2.6.2.2.4.2.7.2Zm-19 14.7v-6.6l-.2-.2 1.8-.5v.3h1l1.2.1.8.4c.2.2.4.4.4.6l.2.7a1.5 1.5 0 0 1-.9 1.4l.5.3a1.7 1.7 0 0 1 .6.9l.1.5c0 .3 0 .6-.2.8 0 .3-.2.5-.4.7l-.9.4-1.2.2H771Zm2.7-1c.4 0 .7 0 1-.2.2-.2.3-.5.3-.9 0-.3-.1-.6-.4-.8-.2-.2-.5-.3-.9-.3h-1.1v2.3h1.1Zm-.3-5.1h-.8v2h1l.4-.1.4-.2.2-.3v-.5c0-.3 0-.6-.3-.7l-.9-.2Zm7.4 4.5 1.4.4c-.2.5-.5.8-.9 1-.4.3-1 .5-1.5.5a2.7 2.7 0 0 1-1.9-.8 2.7 2.7 0 0 1-.8-2c0-.5 0-.8.2-1.2l.6-.9a2.6 2.6 0 0 1 1.8-.7c.4 0 .7 0 1 .2a2.3 2.3 0 0 1 1.4 1.3l.2 1v.6h-3.6c0 .5.2.9.3 1.1.2.3.5.4.8.4.3 0 .6 0 .7-.2.2-.2.3-.4.3-.7Zm0-1.5a2 2 0 0 0-.3-1 .8.8 0 0 0-.7-.3c-.3 0-.5.1-.7.4a2 2 0 0 0-.4.9h2Zm5.7 1.5 1.4.4c-.2.5-.5.8-1 1-.3.3-.8.5-1.4.5a2.7 2.7 0 0 1-1.9-.8 2.7 2.7 0 0 1-.8-2c0-.5 0-.8.2-1.2l.6-.9a2.5 2.5 0 0 1 1.8-.7c.4 0 .7 0 1 .2.3 0 .6.3.8.5.3.2.4.5.6.8l.2 1v.6h-3.6c0 .5.1.9.3 1.1.2.3.5.4.8.4.3 0 .5 0 .7-.2.2-.2.3-.4.3-.7Zm0-1.5c0-.4-.2-.7-.3-1a.8.8 0 0 0-.7-.3c-.3 0-.6.1-.7.4a2 2 0 0 0-.4.9h2Zm3.7-2.3v.8l.7-.5.7-.2c.2 0 .4 0 .6.2l.3.6-.2.6-.6.2h-.4l-.3-.2v-.2l-.2-.1h-.3l-.3.3v4h-1.5v-4.8l-.3-.1 1.8-.6Z"/>
@@ -494,10 +494,14 @@
         </linearGradient>
       </defs>
     </svg>
-    <p v-show="beerCanData === 1">회식에서</p>
-    <p v-show="beerCanData === 2">집에서</p>
-    <p v-show="beerCanData === 3">공원에서</p>
-    <p>한잔</p>
+    <div class="textWrap">
+      <transition name="textFade" mode="out-in">
+        <p class="at" v-if="beerCanData === 1">회식에서</p>
+        <p class="at" v-else-if="beerCanData === 2">집에서</p>
+        <p class="at" v-else-if="beerCanData === 3">공원에서</p>
+      </transition>
+      <p class="count"><span>{{ count }}</span>잔</p>
+    </div>
   </div>
 </template>
 
@@ -506,7 +510,7 @@ import { gsap } from 'gsap'
 import { onMounted, ref } from 'vue'
 
 export default {
-  setup () {
+  setup (props, { emit }) {
     const board = ref()
     const beerCan = ref()
     const beerCanData = ref(1)
@@ -514,7 +518,7 @@ export default {
     const smoke = ref()
     const tvLight = ref()
     const boardAni = () => {
-      gsap.to('#board', {
+      gsap.to(board.value, {
         rotate: '+=120',
         transformOrigin: 'center center',
         duration: 1,
@@ -527,17 +531,21 @@ export default {
         }
       })
     }
+    const count = ref(1)
+    const countPlus = () => {
+      count.value++
+    }
 
     const rotateBoard = () => {
       if (beerCanData.value === 1) {
-        boardAni()
         beerCanData.value = 2
+        boardAni()
       } else if (beerCanData.value === 2) {
-        boardAni()
         beerCanData.value = 3
-      } else if (beerCanData.value === 3) {
         boardAni()
+      } else if (beerCanData.value === 3) {
         beerCanData.value = 1
+        boardAni()
       }
     }
     onMounted(() => {
@@ -572,6 +580,8 @@ export default {
       flash,
       smoke,
       tvLight,
+      count,
+      countPlus,
       boardAni,
       rotateBoard
     }
@@ -590,18 +600,25 @@ export default {
 .boardWrap {
   position: relative;
   transform: translate(-50%, -50%);
+  width: 80%;
   left: 50%;
-  width: 100%;
-  overflow: hidden;
-  text-align: center;
-  p {
-    position: absolute;
-    width: 100%;
-    margin: 0;
-    top: 80%;
-    font-size: 2rem;
-    font-family: 'KOTRALEAP';
-    letter-spacing: 1px;
+  .textWrap {
+    position: relative;
+    text-align: center;
+    transform: translate(0, -100%);
+    p {
+      display: inline-block;
+      margin: 0;
+      font-size: 2rem;
+      font-family: 'KOTRALEAP';
+      letter-spacing: 1px;
+    }
+    .count {
+      margin-left: 10px;
+      span {
+        color: rgb(83, 83, 255);
+      }
+    }
   }
 }
 @media screen and (max-width: 1300px) {
@@ -609,9 +626,26 @@ export default {
     width: 100%;
   }
 }
+@media screen and (max-width: 768px) {
+  .boardWrap {
+    width: 120%;
+  }
+}
 @media screen and (max-width: 480px) {
   .boardWrap {
     width: 200%;
   }
+}
+.textFade-enter-from {
+  opacity: 0;
+  transform: translate(0, -30%);
+}
+.textFade-leave-to {
+  opacity: 0;
+  transform: translate(0, 30%);
+}
+.textFade-enter-active,
+.textFade-leave-active {
+  transition: .5s ease
 }
 </style>
