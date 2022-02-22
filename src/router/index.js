@@ -13,6 +13,7 @@ import Test9 from '@/pages/Test9'
 import FallingToWater from '@/pages/FallingToWater'
 import Test11 from '@/pages/Test11'
 import Test12 from '@/pages/Test12'
+import Test13 from '@/pages/Test13'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -86,6 +87,11 @@ const router = createRouter({
       path: '/test12',
       name: 'Test12',
       component: Test12
+    },
+    {
+      path: '/test13',
+      name: 'Test13',
+      component: Test13
     }
   ]
 })
