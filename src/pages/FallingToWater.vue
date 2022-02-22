@@ -33,7 +33,7 @@
       </defs>
     </svg>
   </div>
-  <div v-show="dd" class="container">
+  <div v-show="showBoard" class="container">
     <Board />
   </div>
 </template>
@@ -51,7 +51,7 @@ export default {
     const btn = ref()
     const reject = ref()
     const background = ref()
-    const dd = ref(false)
+    const showBoard = ref(false)
     const bubbleArray = ref([])
     const bubbleRef = (el) => bubbleArray.value.push(el)
     const movingText = ref()
@@ -95,7 +95,7 @@ export default {
       }, '<')
       gsap.to('.clip', {
         top: '-100%',
-        duration: 1,
+        duration: 0.4,
         ease: 'none',
         delay: 5.5
       })
@@ -116,7 +116,7 @@ export default {
         duration: 2,
         delay: 7,
         onStart () {
-          dd.value = true
+          showBoard.value = true
           gsap.to('.velocity', {
             display: 'none'
           })
@@ -127,7 +127,7 @@ export default {
       gsap.to(reject.value, {
         opacity: 0,
         yPercent: -20,
-        duration: 2,
+        duration: 0.5,
         ease: 'none',
         cursor: 'auto'
       })
@@ -170,7 +170,7 @@ export default {
       reject,
       background,
       movingText,
-      dd,
+      showBoard,
       cursorMove,
       fall,
       disappear,
