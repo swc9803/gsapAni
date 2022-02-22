@@ -1,22 +1,20 @@
 <template>
   <div class="container">
-    <div class="wrapper">
-      <section class="section01">
-        <h1>section01</h1>
-      </section>
-      <section class="section02">
-        <h1>section02</h1>
-      </section>
-      <section class="section03">
-        <h1>section03</h1>
-      </section>
-      <section class="section04">
-        <h1>section04</h1>
-      </section>
-      <section class="section05">
-        <h1>section05</h1>
-      </section>
-    </div>
+    <section class="section01">
+      <h1>section01</h1>
+    </section>
+    <section class="section02">
+      <h1>section02</h1>
+    </section>
+    <section class="section03">
+      <h1>section03</h1>
+    </section>
+    <section class="section04">
+      <h1>section04</h1>
+    </section>
+    <section class="section05">
+      <h1>section05</h1>
+    </section>
   </div>
 </template>
 
@@ -49,14 +47,11 @@ export default {
 <style lang="scss" scoped>
 .container {
   width: 500%;
-  height: 100%;
   overflow-x: hidden;
-  .wrapper {
-    overflow-x: hidden;
-    height: 100%;
-    display: flex;
-    flex-wrap: nowrap;
-  }
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+}
   section {
     width: 100%;
     height: 100%;
@@ -80,6 +75,5 @@ export default {
   .section05 {
     background: seagreen;
   }
-}
 
 </style>
