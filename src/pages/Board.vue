@@ -544,7 +544,7 @@
             </filter>
           </defs>
         </svg>
-        <p>클릭해서 맥주 한 잔하기</p>
+        <p>클릭해서 <span ref="textColor">맥주</span> 한 잔하기</p>
       </div>
     </div>
   </div>
@@ -555,13 +555,14 @@ import { gsap } from 'gsap'
 import { onMounted, ref } from 'vue'
 
 export default {
-  setup () {
+  setup (props, { emit }) {
     const board = ref()
     const beerCan = ref()
     const beerCanData = ref(1)
     const flash = ref()
     const smoke = ref()
     const tvLight = ref()
+    const textColor = ref()
     const boardAni = () => {
       gsap.to(board.value, {
         rotate: '+=120',
@@ -583,12 +584,15 @@ export default {
 
     const rotateBoard = () => {
       if (beerCanData.value === 1) {
+        emit('yellow')
         beerCanData.value = 2
         boardAni()
       } else if (beerCanData.value === 2) {
+        emit('green')
         beerCanData.value = 3
         boardAni()
       } else if (beerCanData.value === 3) {
+        emit('brown')
         beerCanData.value = 1
         boardAni()
       }
@@ -616,6 +620,12 @@ export default {
         repeat: -1,
         repeatDelay: 3
       })
+      gsap.from(textColor.value, {
+        color: '#dac50d',
+        duration: 2,
+        yoyo: true,
+        repeat: -1
+      })
     })
 
     return {
@@ -625,6 +635,7 @@ export default {
       flash,
       smoke,
       tvLight,
+      textColor,
       count,
       countPlus,
       boardAni,
@@ -647,24 +658,13 @@ export default {
   transform: translate(-50%, -50%);
   width: 90%;
   left: 50%;
-  .can {
+  .textWrap {
     position: absolute;
     transform: translate(-50%);
+    top: 78%;
     left: 50%;
-    margin-top: 1%;
-    word-break: keep-all;
-    svg {
-      cursor: pointer;
-      width: 30%;
-    }
-    p {
-      width: 100%;
-    }
-  }
-  .textWrap {
-    position: relative;
+    font-size: 2rem;
     text-align: center;
-    transform: translate(0, -900%);
     p {
       display: inline-block;
       margin: 0;
@@ -678,17 +678,22 @@ export default {
       }
     }
   }
-}
-@media screen and (min-width: 1301px) {
-  .boardWrap {
+  .can {
+    position: relative;
+    margin-top: 1%;
+    word-break: keep-all;
+    svg {
+      cursor: pointer;
+      width: 30%;
+    }
     p {
-      font-size: 2rem;
+      width: 100%;
     }
   }
 }
 @media screen and (max-width: 1300px) {
   .boardWrap {
-    width: 140%;
+    width: 100%;
     p {
       font-size: 1.7rem;
     }
