@@ -1,14 +1,14 @@
 <template>
   <div class="container" ref="container">
     <section class="section1" ref="section1">
+      <h1>section1</h1>
+    </section>
+    <section class="section2" ref="section2">
       <Board
         @yellow="changeToYellow"
         @green="changeToGreen"
         @brown="changeToBrown"
       />
-    </section>
-    <section class="section2" ref="section2">
-      <h1>section2</h1>
     </section>
     <section class="section3" ref="section3">
       <h1>section3</h1>
@@ -41,8 +41,28 @@ export default {
     const section4 = ref()
     const section5 = ref()
 
+    const changeToYellow = () => {
+      gsap.to(section2.value, {
+        background: '#f4ffb480',
+        duration: 1,
+        ease: 'none'
+      })
+    }
+    const changeToGreen = () => {
+      gsap.to(section2.value, {
+        background: '#54dd5280',
+        duration: 1,
+        ease: 'none'
+      })
+    }
+    const changeToBrown = () => {
+      gsap.to(section2.value, {
+        background: '#dab37980',
+        duration: 1,
+        ease: 'none'
+      })
+    }
     onMounted(() => {
-      scrollTo(0, 0)
       ScrollTrigger.matchMedia({
         '(min-width: 767px)': function () {
           const SECTIONS = gsap.utils.toArray([section1.value, section2.value, section3.value, section4.value, section5.value])
@@ -66,7 +86,10 @@ export default {
       section2,
       section3,
       section4,
-      section5
+      section5,
+      changeToYellow,
+      changeToGreen,
+      changeToBrown
     }
   }
 }
@@ -83,8 +106,11 @@ export default {
     height: 100vh;
     position: relative;
   }
-  .section2 {
+  .section1 {
     background: yellowgreen;
+  }
+  .section2 {
+    background: #dab37980;
   }
   .section3 {
     background: firebrick;
