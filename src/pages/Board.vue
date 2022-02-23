@@ -505,7 +505,7 @@
         <p class="at" v-else-if="beerCanData === 2">집에서</p>
         <p class="at" v-else-if="beerCanData === 3">공원에서</p>
       </transition>
-      <p class="count"><span>{{ count }}</span>잔</p>
+      <p class="count"><span ref="plus" class="plus">+1</span><span>{{ count }}</span>잔</p>
       <div class="can">
         <svg class="beerCan" ref="beerCan" @click="rotateBoard(), countPlus()" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 74 74">
           <g>
@@ -571,6 +571,7 @@ export default {
     const smoke = ref()
     const tvLight = ref()
     const textColor = ref()
+    const plus = ref()
     const boardAni = () => {
       gsap.to(board.value, {
         rotate: '+=120',
@@ -587,6 +588,20 @@ export default {
     }
     const count = ref(1)
     const countPlus = () => {
+      gsap.to(plus.value, {
+        opacity: 1,
+        yPercent: -30,
+        duration: 0.4,
+        ease: 'none'
+      })
+      gsap.to(plus.value, {
+        opacity: 0,
+        duration: 0.4,
+        ease: 'none'
+      }, '>')
+      gsap.set(plus.value, {
+        yPercent: 0
+      }, '>')
       count.value++
     }
 
@@ -644,6 +659,7 @@ export default {
       smoke,
       tvLight,
       textColor,
+      plus,
       count,
       countPlus,
       boardAni,
@@ -682,7 +698,15 @@ export default {
     .count {
       margin-left: 10px;
       span {
+        position: relative;
         color: rgb(83, 83, 255);
+      }
+      .plus {
+        opacity: 0;
+        position: absolute;
+        transform: translate(-7%);
+        top: -2%;
+        font-size: 1rem;
       }
     }
   }
