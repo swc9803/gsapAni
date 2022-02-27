@@ -146,7 +146,7 @@ export default {
   height: 100%;
   text-align: center;
   width: 100%;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('~@/assets/beerBack.png');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),  url('~@/assets/beerBack.png');
   background-size: cover;
   background-position: center;
   color: white;
@@ -185,18 +185,24 @@ export default {
     }
   }
   .warning {
-    margin-top: 3%;
+    margin: 3% 0 3% 0;
     font-size: 0.8rem;
     word-break: keep-all;
   }
 }
 @media screen and (max-width: 800px) {
   .dd {
+    .info {
+      margin: 6% 0 3% 0;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
     .nutritionWrap {
       .nutrition {
         position: relative;
         transform: translate(-50%);
-        margin: 10px 0 10px 0;
+        margin: 5px 0 5px 0;
+        font-size: 1rem;
         left: 50%;
         width: 90%;
       }
