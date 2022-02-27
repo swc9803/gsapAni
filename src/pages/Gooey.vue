@@ -1,9 +1,9 @@
 <template>
   <!-- test1 -->
-  <div class="container">
+  <div class="container" @mousemove="dd">
     <div class="blobs">
       <div class="blob">2</div>
-      <div class="blob s2">1</div>
+      <div ref="el" class="blob s2">1</div>
     </div>
     <svg xmlns="http://www.w3.org/2000/svg">
       <defs>
@@ -18,21 +18,21 @@
 </template>
 
 <script>
-// import gsap from 'gsap'
-import { onMounted } from 'vue'
+import { ref } from 'vue'
 
 export default {
   setup () {
-    onMounted(() => {
-      var svgElem = document.querySelector('.s2')
-
-      window.addEventListener('mousemove', function (e) {
-        const x = e.clientX
-        const y = e.clientY
-        svgElem.style.top = y + 'px'
-        svgElem.style.left = x + 'px'
-      })
-    })
+    const el = ref()
+    const dd = (e) => {
+      const x = e.clientX
+      const y = e.clientY
+      el.value.style.top = y + 'px'
+      el.value.style.left = x + 'px'
+    }
+    return {
+      el,
+      dd
+    }
   }
 }
 </script>
