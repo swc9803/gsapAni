@@ -1,5 +1,4 @@
 <template>
-  <!-- 800이하 한 줄 -->
   <div class="dd">
     <div class="info">
       <p>영양 정보</p>
@@ -114,7 +113,7 @@ export default {
       })
       gsap.to(Cont4, {
         val4: NewVal4,
-        duration: 5,
+        duration: 4,
         roundProps: 'val4',
         onUpdate: function () {
           counter4.value.innerHTML = Cont4.val4
@@ -122,7 +121,7 @@ export default {
       })
       gsap.to(Cont5, {
         val5: NewVal5,
-        duration: 5,
+        duration: 4,
         roundProps: 'val5',
         onUpdate: function () {
           counter5.value.innerHTML = Cont5.val5
@@ -146,7 +145,10 @@ export default {
   width: 100%;
   height: 100%;
   text-align: center;
-  background: rgb(31, 31, 31);
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('~@/assets/beerBack.png');
+  background-size: cover;
+  background-position: center;
   color: white;
   .info {
     margin: 8% 0 5% 0;
