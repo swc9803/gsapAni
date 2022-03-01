@@ -1,131 +1,109 @@
 <template>
-  <div class="container" ref="container">
-    <section class="section1" ref="section1">
-      <h1>section1</h1>
-    </section>
-    <section class="section2" ref="section2">
-      <Board
-        @yellow="changeToYellow"
-        @green="changeToGreen"
-        @brown="changeToBrown"
-      />
-    </section>
-    <section class="section3" ref="section3">
-      <h1>section3</h1>
-    </section>
-    <section class="section4" ref="section4">
-      <h1>section4</h1>
-    </section>
-    <section class="section5" ref="section5">
-      <h1>section5</h1>
-    </section>
+  <div class="dd">
+    <nav>
+      <a href=".section1" class="anchor">section 1</a>
+      <a href=".section2" class="anchor">section 2</a>
+      <a href=".section3" class="anchor">section 3</a>
+      <a href=".section4" class="anchor">section 4</a>
+    </nav>
+
+    <div ref="sectionWrap" class="sectionWrap">
+      <div ref="section1" class="section section1">
+        <h2>section 1</h2>
+      </div>
+      <div ref="section2" class="section section2">
+        <h2>section 2</h2>
+      </div>
+      <div ref="section3" class="section section3">
+        <h2>section 3</h2>
+      </div>
+      <div ref="section4" class="section section4">
+        <h2>section 4</h2>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import Board from '@/pages/Board'
 import { onMounted, ref } from 'vue'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-gsap.registerPlugin(ScrollTrigger)
+import ScrollTrigger from 'gsap/ScrollTrigger'
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
 export default {
-  components: {
-    Board
-  },
   setup () {
-    const container = ref()
+    const sectionWrap = ref()
     const section1 = ref()
     const section2 = ref()
     const section3 = ref()
     const section4 = ref()
-    const section5 = ref()
-
-    const changeToYellow = () => {
-      gsap.to(section2.value, {
-        background: '#f4ffb480',
-        duration: 1,
-        ease: 'none'
-      })
-    }
-    const changeToGreen = () => {
-      gsap.to(section2.value, {
-        background: '#54dd5280',
-        duration: 1,
-        ease: 'none'
-      })
-    }
-    const changeToBrown = () => {
-      gsap.to(section2.value, {
-        background: '#dab37980',
-        duration: 1,
-        ease: 'none'
-      })
-    }
     onMounted(() => {
-      ScrollTrigger.matchMedia({
-        '(min-width: 767px)': function () {
-          const SECTIONS = gsap.utils.toArray([section1.value, section2.value, section3.value, section4.value, section5.value])
-          gsap.to(SECTIONS, {
-            xPercent: -100 * (SECTIONS.length - 1),
-            ease: 'none',
-            scrollTrigger: {
-              trigger: container.value,
-              end: () => '+=' + container.value.offsetWidth,
-              pin: true,
-              scrub: 0.1,
-              snap: 1 / (SECTIONS.length - 1)
-            }
+      document.querySelectorAll('.anchor').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault()
+          const targetElem = document.querySelector(e.target.getAttribute('href'))
+          let y = targetElem
+          if (targetElem && sectionWrap.value.isSameNode(targetElem.parentElement)) {
+            const totalScroll = scrollAni.scrollTrigger.end - scrollAni.scrollTrigger.start
+            const totalMovement = (sections.length - 1) * targetElem.offsetWidth
+            y = Math.round(scrollAni.scrollTrigger.start + (targetElem.offsetLeft / totalMovement) * totalScroll)
+          }
+          gsap.to(window, {
+            scrollTo: {
+              y: y,
+              autoKill: false
+            },
+            duration: 1
           })
+        })
+      })
+      const sections = gsap.utils.toArray([section1.value, section2.value, section3.value, section4.value])
+      const scrollAni = gsap.to(sections, {
+        xPercent: -100 * (sections.length - 1),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: sectionWrap.value,
+          pin: true,
+          start: 'top top',
+          scrub: 1,
+          snap: {
+            snapTo: 1 / (sections.length - 1),
+            inertia: false,
+            duration: { min: 0.1, max: 0.1 }
+          },
+          end: () => '+=' + (sectionWrap.value.offsetWidth - innerWidth)
         }
       })
     })
     return {
-      container,
+      sectionWrap,
       section1,
       section2,
       section3,
-      section4,
-      section5,
-      changeToYellow,
-      changeToGreen,
-      changeToBrown
+      section4
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.container {
-  width: 500%;
-  display: flex;
-  overflow: hidden;
-  section {
-    overflow: hidden;
-    width: 100%;
+.dd {
+  height: 100%;
+  nav {
+    position: fixed;
+    z-index: 9;
+  }
+  .sectionWrap {
+    width: 400%;
     height: 100vh;
-    position: relative;
-  }
-  .section1 {
-    background: yellowgreen;
-  }
-  .section2 {
-    background: #dab37980;
-  }
-  .section3 {
-    background: firebrick;
-  }
-  .section4 {
-    background: cornflowerblue;
-  }
-  .section5 {
-    background: seagreen;
+    display: flex;
+    .section {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+    }
   }
 }
-@media screen and (max-width: 768px) {
-  .container {
-    width: 100%;
-    display: block;
-  }
-}
+
 </style>
