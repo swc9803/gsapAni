@@ -6,7 +6,6 @@
 </template>
 
 <script>
-// import gsap from 'gsap'
 import Matter from 'matter-js'
 import { onMounted, ref } from 'vue'
 export default {
@@ -20,15 +19,15 @@ export default {
       var Mouse = Matter.Mouse
       var Composite = Matter.Composite
       var Bodies = Matter.Bodies
+      var wWidth = innerWidth
+      var wHeight = innerHeight
 
       // create engine
       var engine = Engine.create()
-      engine.world.gravity.y = 0.8
+      engine.world.gravity.y = 0.7
       var world = engine.world
 
       // create renderer
-      var wWidth = window.innerWidth
-      var wHeight = window.innerHeight
       var render = Render.create({
         element: restitution.value,
         engine: engine,
@@ -45,13 +44,18 @@ export default {
       var rest = 0.9
       var space = wWidth / 5
       Composite.add(world, [
-        Bodies.rectangle(100 + space * 0, 150, 50, 50, { restitution: rest }),
+        Bodies.rectangle(100 + space * 0, 150, 50, 50, {
+          restitution: rest,
+          render: {
+            fillStyle: 'red'
+          }
+        }),
         Bodies.rectangle(100 + space * 1, 150, 50, 50, { restitution: rest, angle: -Math.PI * 0.15 }),
         Bodies.rectangle(100 + space * 2, 150, 50, 50, { restitution: rest, angle: -Math.PI * 0.24 }),
         Bodies.circle(100 + space * 3, 150, 25, { restitution: rest }),
-        Bodies.rectangle(100 + space * 4, 150, 180, 20, { restitution: rest, angle: -Math.PI * 0.5 }),
+        Bodies.rectangle(100 + space * 4, 150, 180, 20, { restitution: rest, angle: -Math.PI * 0.25 }),
         // walls
-        Bodies.rectangle(wWidth / 2, wHeight, wWidth - 50, 50, { isStatic: true }),
+        Bodies.rectangle(wWidth / 2, wHeight, wWidth - 50, 50, { isStatic: true, color: '#ffffff' }),
         Bodies.rectangle(wWidth, wHeight / 2, 50, wHeight, { isStatic: true }),
         Bodies.rectangle(0, wHeight / 2, 50, wHeight, { isStatic: true })
       ])

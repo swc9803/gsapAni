@@ -11,7 +11,7 @@ import BlobText from '@/pages/BlobText'
 import Board from '@/pages/Board'
 import Test9 from '@/pages/Test9'
 import FallingToWater from '@/pages/FallingToWater'
-import Test11 from '@/pages/Test11'
+import ThreeTear from '@/pages/ThreeTear'
 import BolbText from '@/pages/BolbText'
 import Test13 from '@/pages/Test13'
 import BouncingBall from '@/pages/BouncingBall'
@@ -84,8 +84,8 @@ const router = createRouter({
     },
     {
       path: '/test11',
-      name: 'Test11',
-      component: Test11
+      name: 'ThreeTear',
+      component: ThreeTear
     },
     {
       path: '/test12',

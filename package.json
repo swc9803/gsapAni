@@ -13,6 +13,7 @@
     "matter-js": "^0.18.0",
     "node-sass": "^6.0.1",
     "sass-loader": "10.2",
+    "three": "^0.138.3",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
