@@ -12,9 +12,12 @@ import Board from '@/pages/Board'
 import Test9 from '@/pages/Test9'
 import FallingToWater from '@/pages/FallingToWater'
 import Test11 from '@/pages/Test11'
-import Test12 from '@/pages/Test12'
+import BolbText from '@/pages/BolbText'
 import Test13 from '@/pages/Test13'
-import Test14 from '@/pages/Test14'
+import BouncingBall from '@/pages/BouncingBall'
+import MatterRestitution from '@/pages/MatterRestitution'
+import CanvasBackground from '@/pages/CanvasBackground'
+import MatterCreateBall from '@/pages/MatterCreateBall'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -86,8 +89,8 @@ const router = createRouter({
     },
     {
       path: '/test12',
-      name: 'Test12',
-      component: Test12
+      name: 'BolbText',
+      component: BolbText
     },
     {
       path: '/test13',
@@ -96,8 +99,23 @@ const router = createRouter({
     },
     {
       path: '/test14',
-      name: 'Test14',
-      component: Test14
+      name: 'BouncingBall',
+      component: BouncingBall
+    },
+    {
+      path: '/test15',
+      name: 'MatterRestitution',
+      component: MatterRestitution
+    },
+    {
+      path: '/test16',
+      name: 'CanvasBackground',
+      component: CanvasBackground
+    },
+    {
+      path: '/test17',
+      name: 'MatterCreateBall',
+      component: MatterCreateBall
     }
   ]
 })
