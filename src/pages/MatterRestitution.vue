@@ -3,12 +3,17 @@
   <div class="container">
     <div ref="restitution" />
   </div>
+  <Squiggly />
 </template>
 
 <script>
 import Matter from 'matter-js'
 import { onMounted, ref } from 'vue'
+import Squiggly from '@/components/Squiggly'
 export default {
+  components: {
+    Squiggly
+  },
   setup () {
     const restitution = ref()
     onMounted(() => {
@@ -34,30 +39,31 @@ export default {
         options: {
           width: wWidth,
           height: wHeight,
-          wireframes: false,
-          background: '#ffffff'
+          wireframes: false
+          // background: '#ffffff'
         }
       })
       Render.run(render)
       var runner = Runner.create()
       Runner.run(runner, engine)
-      var rest = 0.9
       var space = wWidth / 5
       Composite.add(world, [
-        Bodies.rectangle(100 + space * 0, 150, 50, 50, {
-          restitution: rest,
-          render: {
-            fillStyle: 'red'
-          }
-        }),
-        Bodies.rectangle(100 + space * 1, 150, 50, 50, { restitution: rest, angle: -Math.PI * 0.15 }),
-        Bodies.rectangle(100 + space * 2, 150, 50, 50, { restitution: rest, angle: -Math.PI * 0.24 }),
-        Bodies.circle(100 + space * 3, 150, 25, { restitution: rest }),
-        Bodies.rectangle(100 + space * 4, 150, 180, 20, { restitution: rest, angle: -Math.PI * 0.25 }),
+        Bodies.rectangle(100 + 0, 150, 70, 70, { restitution: 0.95, render: { fillStyle: 'darkgray' } }),
+        Bodies.rectangle(100 + space * 1, 150, 40, 40, { restitution: 0.95, angle: -Math.PI * 0.15, render: { fillStyle: 'darkgray' } }),
+        Bodies.circle(100 + space * 1.5, 150, 15, { restitution: 0.95, render: { fillStyle: 'darkgray' } }),
+        Bodies.rectangle(100 + space * 2, 150, 50, 30, { restitution: 0.95, angle: -Math.PI * 0.24, render: { fillStyle: 'darkgray' } }),
+        Bodies.rectangle(100 + space * 2.1, 150, 30, 30, { restitution: 0.95, angle: -Math.PI * 0.24, render: { fillStyle: 'darkgray' } }),
+        Bodies.polygon(100 + space * 2.4, 150, 3, 30, { restitution: 0.95, angle: -Math.PI * 0.24, render: { fillStyle: 'darkgray' } }),
+        Bodies.polygon(100 + space * 2.8, 150, 3, 30, { restitution: 0.95, angle: -Math.PI * 0.24, render: { fillStyle: 'darkgray' } }),
+        Bodies.polygon(100 + space * 2.6, 150, 6, 30, { restitution: 0.95, angle: -Math.PI * 0.24, render: { fillStyle: 'darkgray' } }),
+        Bodies.circle(100 + space * 3, 150, 25, { restitution: 0.95, render: { fillStyle: 'darkgray' } }),
+        Bodies.circle(100 + space * 3.5, 150, 25, { restitution: 0.95, render: { fillStyle: 'darkgray' } }),
+        Bodies.rectangle(100 + space * 4.2, 150, 180, 20, { restitution: 0.95, angle: -Math.PI * 0.25, render: { fillStyle: 'darkgray' } }),
+        Bodies.rectangle(100 + space * 4, 170, 180, 20, { restitution: 0.95, angle: -Math.PI * 0.25, render: { fillStyle: 'darkgray' } }),
         // walls
-        Bodies.rectangle(wWidth / 2, wHeight, wWidth - 50, 50, { isStatic: true, color: '#ffffff' }),
-        Bodies.rectangle(wWidth, wHeight / 2, 50, wHeight, { isStatic: true }),
-        Bodies.rectangle(0, wHeight / 2, 50, wHeight, { isStatic: true })
+        Bodies.rectangle(wWidth / 2, wHeight, wWidth - 50, 50, { isStatic: true, render: { fillStyle: '#333333' } }),
+        Bodies.rectangle(wWidth, wHeight / 2, 50, wHeight, { isStatic: true, render: { fillStyle: '#333333' } }),
+        Bodies.rectangle(0, wHeight / 2, 50, wHeight, { isStatic: true, render: { fillStyle: '#333333' } })
       ])
       // add mouse control
       var mouse = Mouse.create(render.canvas)
@@ -90,9 +96,27 @@ export default {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  background: #14151f;
   div {
-    overflow: hidden;
+    animation: squiggly .5s linear infinite;
     height: 100vh;
+  }
+}
+@keyframes squiggly {
+  0% {
+    filter: url("#squiggly1");
+  }
+  25% {
+    filter: url("#squiggly2");
+  }
+  50% {
+    filter: url("#squiggly3");
+  }
+  75% {
+    filter: url("#squiggly4");
+  }
+  100% {
+    filter: url("#squiggly5");
   }
 }
 </style>

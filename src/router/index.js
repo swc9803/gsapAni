@@ -13,11 +13,13 @@ import Test9 from '@/pages/Test9'
 import FallingToWater from '@/pages/FallingToWater'
 import ThreeTear from '@/pages/ThreeTear'
 import BolbText from '@/pages/BolbText'
-import Test13 from '@/pages/Test13'
+import CountNumber from '@/pages/CountNumber'
 import BouncingBall from '@/pages/BouncingBall'
 import MatterRestitution from '@/pages/MatterRestitution'
 import CanvasBackground from '@/pages/CanvasBackground'
 import MatterCreateBall from '@/pages/MatterCreateBall'
+import DrawDoor from '@/pages/DrawDoor'
+import SplitText from '@/pages/SplitText'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -94,8 +96,8 @@ const router = createRouter({
     },
     {
       path: '/test13',
-      name: 'Test13',
-      component: Test13
+      name: 'CountNumber',
+      component: CountNumber
     },
     {
       path: '/test14',
@@ -116,6 +118,16 @@ const router = createRouter({
       path: '/test17',
       name: 'MatterCreateBall',
       component: MatterCreateBall
+    },
+    {
+      path: '/test18',
+      name: 'DrawDoor',
+      component: DrawDoor
+    },
+    {
+      path: '/test19',
+      name: 'SplitText',
+      component: SplitText
     }
   ]
 })
