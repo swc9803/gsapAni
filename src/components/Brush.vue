@@ -1,14 +1,32 @@
 <template>
   <span>
     <button @click="play">play</button>
-    <svg ref="door" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 973 1696">
-      <path ref="top" fill="#fff" d="M0 0h973v91H0z"/>
-      <path ref="right" fill="#fff" d="M876 0h97v1696h-97z"/>
-      <path ref="bottom" fill="#fff" d="M0 1605h973v91H0z"/>
-      <path ref="left" fill="#fff" d="M0 0h97v1696H0z"/>
-      <path ref="openDoor" fill="#14151F" d="M97 91h779v1514H97z"/>
-      <circle ref="handle" cx="241.5" cy="847.5" r="52.5" fill="#fff"/>
+    <svg class="flash" ref="flash" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 1573 2952">
+      <g filter="url(#flash0_f_22_2)">
+        <path fill="#FFFBDB" d="M56 56h1461v2840H56z"/>
+      </g>
+      <defs>
+        <filter id="flash0_f_22_2" width="1573" height="2952" x="0" y="0" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+          <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+          <feGaussianBlur result="effect1_foregroundBlur_22_2" stdDeviation="50"/>
+        </filter>
+      </defs>
     </svg>
+
+    <svg class="open" ref="door" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 1013 1736">
+      <path ref="top" fill="#fff" d="M20 20h973v91H20z"/>
+      <path ref="right" fill="#fff" d="M896 20h97v1696h-97z"/>
+      <path ref="bottom" fill="#fff" d="M20 1625h973v91H20z"/>
+      <path ref="left" fill="#fff" d="M20 20h97v1696H20z"/>
+      <path @click="goToDoor" class="clickDoor" ref="clickDoor" fill="#FFF06B" d="M117 111h779v1514H117z"/>
+    </svg>
+
+    <svg @click="open" class="open" ref="doorFrame" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 973 1696">
+      <path ref="openDoor" fill="#14151F" d="M97 105h783v1486H97z"/>
+      <circle ref="handle" cx="261.5" cy="847.5" r="52.5" fill="#fff"/>
+    </svg>
+
     <svg class="brush" ref="brush" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 720 1035">
       <path fill="url(#brush0_linear_12_20)" d="M634.64 40.43a19.24 19.24 0 0 1 32.51 20.51L370.62 577.28l-74.39-46.79L634.64 40.43Z"/>
       <path fill="url(#brush1_linear_12_20)" d="M288.79 525.81c39.82 13.87 59.5 26.24 89.27 56.15l-131.89 193.2-74.4-46.78L288.8 525.8Z"/>
@@ -60,9 +78,11 @@
 </template>
 <script>
 import { onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import gsap from 'gsap'
 export default {
   setup () {
+    const router = useRouter()
     const brush = ref()
     const door = ref()
     const top = ref()
@@ -71,105 +91,133 @@ export default {
     const left = ref()
     const openDoor = ref()
     const handle = ref()
+    const doorFrame = ref()
+    const clickDoor = ref()
+    const flash = ref()
+
     const play = () => {
       gsap.set([top.value, right.value, bottom.value, left.value], {
         opacity: 1
       })
       gsap.to(brush.value, {
-        opacity: 1,
-        duration: 1
+        opacity: 1
+        // duration: 1
       })
       gsap.from(brush.value, {
         xPercent: 150,
-        yPercent: -80,
-        duration: 1
+        yPercent: -80
+        // duration: 1
       }, '<')
       gsap.to(brush.value, {
-        xPercent: 160,
-        duration: 1
+        xPercent: 160
+        // duration: 1
       }, '>')
       gsap.to(top.value, {
-        scaleX: 1,
-        duration: 1
+        scaleX: 1
+        // duration: 1
       }, '<')
       gsap.to(brush.value, {
-        rotate: 90,
-        duration: 0.3
+        rotate: 90
+        // duration: 0.3
       }, '>')
       gsap.to(brush.value, {
         xPercent: 180,
-        yPercent: 70,
-        duration: 0.3
+        yPercent: 70
+        // duration: 0.3
       }, '<')
       gsap.to(brush.value, {
-        yPercent: 265,
-        duration: 1
+        yPercent: 265
+        // duration: 1
       }, '>')
       gsap.to(right.value, {
-        scaleY: 1,
-        duration: 1
+        scaleY: 1
+        // duration: 1
       }, '<')
       gsap.to(brush.value, {
-        rotate: 180,
-        duration: 0.3
+        rotate: 180
+        // duration: 0.3
       }, '>')
       gsap.to(brush.value, {
         xPercent: 80,
-        yPercent: 270,
-        duration: 0.3
+        yPercent: 270
+        // duration: 0.3
       }, '<')
       gsap.to(brush.value, {
-        xPercent: -78,
-        duration: 1
+        xPercent: -78
+        // duration: 1
       }, '>')
       gsap.from(bottom.value, {
         scaleX: 0,
-        transformOrigin: 'right',
-        duration: 1
+        transformOrigin: 'right'
+        // duration: 1
       }, '<')
       gsap.to(brush.value, {
-        rotate: 0,
-        duration: 0.3
+        rotate: 0
+        // duration: 0.3
       }, '>')
       gsap.to(brush.value, {
         xPercent: 0,
-        yPercent: 190,
-        duration: 0.3
+        yPercent: 190
+        // duration: 0.3
       }, '<')
       gsap.to(brush.value, {
-        yPercent: 0,
-        duration: 1
+        yPercent: 0
+        // duration: 1
       }, '>')
       gsap.from(left.value, {
         scaleY: 0,
-        transformOrigin: 'bottom',
-        duration: 1
+        transformOrigin: 'bottom'
+        // duration: 1
       }, '<')
       gsap.to(brush.value, {
         xPercent: 40,
-        yPercent: 95,
-        duration: 1
+        yPercent: 95
+        // duration: 1
       }, '>')
       gsap.to(handle.value, {
-        opacity: 1,
-        duration: 0.2
+        opacity: 1
+        // duration: 0.2
       }, '>')
       gsap.to(brush.value, {
         xPercent: 150,
         yPercent: -80,
-        opacity: 0,
-        duration: 1
+        opacity: 0
+        // duration: 1
       }, '>')
       gsap.to(openDoor.value, {
-        xPercent: 10,
-        duration: 1
+        fill: '#353900',
+        // duration: 1,
+        onComplete () {
+          doorFrame.value.style.pointerEvents = 'auto'
+          setTimeout(() => {
+            clickDoor.value.style.pointerEvents = 'auto'
+          }, 2000)
+        }
       }, '>')
-      gsap.to(handle.value, {
-        xPercent: 500,
-        scaleX: 0,
-        transformOrigin: 'left',
-        duration: 1
-      }, '<')
+    }
+    const open = () => {
+      gsap.to(doorFrame.value, {
+        rotateY: -135,
+        xPercent: -17.5,
+        transformOrigin: 'right'
+        // duration: 2
+      })
+      setTimeout(() => {
+        gsap.to(flash.value, {
+          opacity: 0.2,
+          duration: 3,
+          scale: 1.2,
+          transformOrigin: 'center center',
+          ease: 'none',
+          yoyo: true,
+          repeat: -1
+        })
+      }, 1500)
+    }
+    const goToDoor = () => {
+      router.push({
+        name: 'Test20'
+      })
     }
     onMounted(() => {
       gsap.set(brush.value, {
@@ -180,6 +228,14 @@ export default {
         left: '55%',
         top: '25%'
       })
+      gsap.set(doorFrame.value, {
+        left: '55%',
+        top: '25%'
+      })
+      gsap.set(flash.value, {
+        left: '54%',
+        top: '20%'
+      })
       gsap.set(top.value, {
         scaleX: 0
       })
@@ -187,6 +243,9 @@ export default {
         scaleY: 0
       })
       gsap.set([brush.value, bottom.value, left.value, handle.value], {
+        opacity: 0
+      })
+      gsap.set(flash.value, {
         opacity: 0
       })
     })
@@ -199,17 +258,35 @@ export default {
       left,
       openDoor,
       handle,
-      play
+      doorFrame,
+      clickDoor,
+      flash,
+      play,
+      open,
+      goToDoor
     }
   }
 }
 </script>
 <style lang="scss" scoped>
-svg {
-  position: absolute;
+span {
+  svg {
+    position: absolute;
+  }
+}
+.open {
   height: 40%;
 }
 .brush {
   height: 20%;
+}
+.flash {
+  pointer-events: none;
+  height: 50%;
+}
+.open,
+.clickDoor {
+  pointer-events: none;
+  cursor: pointer;
 }
 </style>

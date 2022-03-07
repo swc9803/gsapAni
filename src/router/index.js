@@ -20,6 +20,7 @@ import CanvasBackground from '@/pages/CanvasBackground'
 import MatterCreateBall from '@/pages/MatterCreateBall'
 import DrawDoor from '@/pages/DrawDoor'
 import SplitText from '@/pages/SplitText'
+import Test20 from '@/pages/Test20'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -128,6 +129,11 @@ const router = createRouter({
       path: '/test19',
       name: 'SplitText',
       component: SplitText
+    },
+    {
+      path: '/test20',
+      name: 'Test20',
+      component: Test20
     }
   ]
 })

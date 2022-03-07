@@ -1,18 +1,18 @@
 <template>
   <!-- test15 -->
   <div class="container">
+    <Brush class="draw" />
     <div ref="restitution" />
   </div>
-  <Squiggly />
 </template>
 
 <script>
+import Brush from '@/components/Brush'
 import Matter from 'matter-js'
 import { onMounted, ref } from 'vue'
-import Squiggly from '@/components/Squiggly'
 export default {
   components: {
-    Squiggly
+    Brush
   },
   setup () {
     const restitution = ref()
@@ -40,7 +40,6 @@ export default {
           width: wWidth,
           height: wHeight,
           wireframes: false
-          // background: '#ffffff'
         }
       })
       Render.run(render)
@@ -98,25 +97,10 @@ export default {
   overflow: hidden;
   background: #14151f;
   div {
-    animation: squiggly .5s linear infinite;
     height: 100vh;
   }
 }
-@keyframes squiggly {
-  0% {
-    filter: url("#squiggly1");
-  }
-  25% {
-    filter: url("#squiggly2");
-  }
-  50% {
-    filter: url("#squiggly3");
-  }
-  75% {
-    filter: url("#squiggly4");
-  }
-  100% {
-    filter: url("#squiggly5");
-  }
+.draw {
+  display: none;
 }
 </style>
