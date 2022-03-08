@@ -69,7 +69,7 @@ import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import gsap from 'gsap'
 export default {
-  setup () {
+  setup (props, { emit }) {
     const router = useRouter()
     const brush = ref()
     const door = ref()
@@ -193,19 +193,28 @@ export default {
         }
       })
       gsap.to(dooor.value, {
-        scaleX: 1,
+        scaleX: 1.2,
         transformOrigin: 'right',
         duration: 2
       }, '<')
     }
     const goToDoor = () => {
-      router.push({
-        name: 'Test20'
+      emit('scaleDoor')
+      gsap.to(doorFrame.value, {
+        xPercent: -18,
+        rotateY: -130,
+        transformOrigin: 'right',
+        duration: 3
       })
+      setTimeout(() => {
+        router.push({
+          name: 'Test20'
+        })
+      }, 5000)
     }
     onMounted(() => {
       gsap.set(brush.value, {
-        left: '54%',
+        left: '54.5%',
         top: '8%'
       })
       gsap.set(door.value, {
