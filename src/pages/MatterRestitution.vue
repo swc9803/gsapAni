@@ -100,7 +100,7 @@ export default {
     height: 100vh;
   }
 }
-.draw {
-  display: none;
-}
+// .draw {
+//   display: none;
+// }
 </style>

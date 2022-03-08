@@ -1,19 +1,6 @@
 <template>
   <span>
     <button @click="play">play</button>
-    <svg class="flash" ref="flash" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 1573 2952">
-      <g filter="url(#flash0_f_22_2)">
-        <path fill="#FFFBDB" d="M56 56h1461v2840H56z"/>
-      </g>
-      <defs>
-        <filter id="flash0_f_22_2" width="1573" height="2952" x="0" y="0" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-          <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-          <feGaussianBlur result="effect1_foregroundBlur_22_2" stdDeviation="50"/>
-        </filter>
-      </defs>
-    </svg>
-
     <svg class="open" ref="door" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 1013 1736">
       <path ref="top" fill="#fff" d="M20 20h973v91H20z"/>
       <path ref="right" fill="#fff" d="M896 20h97v1696h-97z"/>
@@ -23,8 +10,9 @@
     </svg>
 
     <svg @click="open" class="open" ref="doorFrame" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 973 1696">
-      <path ref="openDoor" fill="#14151F" d="M97 105h783v1486H97z"/>
+      <path ref="openDoor" fill="#14151F" d="M97 104h784v1489H97z"/>
       <circle ref="handle" cx="261.5" cy="847.5" r="52.5" fill="#fff"/>
+      <path ref="dooor" fill="#5A6100" d="M25 104h73v1489H25z"/>
     </svg>
 
     <svg class="brush" ref="brush" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 720 1035">
@@ -91,102 +79,102 @@ export default {
     const left = ref()
     const openDoor = ref()
     const handle = ref()
+    const dooor = ref()
     const doorFrame = ref()
     const clickDoor = ref()
-    const flash = ref()
 
     const play = () => {
       gsap.set([top.value, right.value, bottom.value, left.value], {
         opacity: 1
       })
       gsap.to(brush.value, {
-        opacity: 1
-        // duration: 1
+        opacity: 1,
+        duration: 1
       })
       gsap.from(brush.value, {
         xPercent: 150,
-        yPercent: -80
-        // duration: 1
+        yPercent: -80,
+        duration: 1
       }, '<')
       gsap.to(brush.value, {
-        xPercent: 160
-        // duration: 1
+        xPercent: 160,
+        duration: 1
       }, '>')
       gsap.to(top.value, {
-        scaleX: 1
-        // duration: 1
+        scaleX: 1,
+        duration: 1
       }, '<')
       gsap.to(brush.value, {
-        rotate: 90
-        // duration: 0.3
+        rotate: 90,
+        duration: 0.3
       }, '>')
       gsap.to(brush.value, {
         xPercent: 180,
-        yPercent: 70
-        // duration: 0.3
+        yPercent: 70,
+        duration: 0.3
       }, '<')
       gsap.to(brush.value, {
-        yPercent: 265
-        // duration: 1
+        yPercent: 265,
+        duration: 1
       }, '>')
       gsap.to(right.value, {
-        scaleY: 1
-        // duration: 1
+        scaleY: 1,
+        duration: 1
       }, '<')
       gsap.to(brush.value, {
-        rotate: 180
-        // duration: 0.3
+        rotate: 180,
+        duration: 0.3
       }, '>')
       gsap.to(brush.value, {
         xPercent: 80,
-        yPercent: 270
-        // duration: 0.3
+        yPercent: 270,
+        duration: 0.3
       }, '<')
       gsap.to(brush.value, {
-        xPercent: -78
-        // duration: 1
+        xPercent: -78,
+        duration: 1
       }, '>')
       gsap.from(bottom.value, {
         scaleX: 0,
-        transformOrigin: 'right'
-        // duration: 1
+        transformOrigin: 'right',
+        duration: 1
       }, '<')
       gsap.to(brush.value, {
-        rotate: 0
-        // duration: 0.3
+        rotate: 0,
+        duration: 0.3
       }, '>')
       gsap.to(brush.value, {
         xPercent: 0,
-        yPercent: 190
-        // duration: 0.3
+        yPercent: 190,
+        duration: 0.3
       }, '<')
       gsap.to(brush.value, {
-        yPercent: 0
-        // duration: 1
+        yPercent: 0,
+        duration: 1
       }, '>')
       gsap.from(left.value, {
         scaleY: 0,
-        transformOrigin: 'bottom'
-        // duration: 1
+        transformOrigin: 'bottom',
+        duration: 1
       }, '<')
       gsap.to(brush.value, {
         xPercent: 40,
-        yPercent: 95
-        // duration: 1
+        yPercent: 95,
+        duration: 1
       }, '>')
       gsap.to(handle.value, {
-        opacity: 1
-        // duration: 0.2
+        opacity: 1,
+        duration: 0.2
       }, '>')
       gsap.to(brush.value, {
         xPercent: 150,
         yPercent: -80,
-        opacity: 0
-        // duration: 1
+        opacity: 0,
+        duration: 1
       }, '>')
       gsap.to(openDoor.value, {
         fill: '#353900',
-        // duration: 1,
+        duration: 1,
         onComplete () {
           doorFrame.value.style.pointerEvents = 'auto'
           setTimeout(() => {
@@ -197,22 +185,18 @@ export default {
     }
     const open = () => {
       gsap.to(doorFrame.value, {
-        rotateY: -135,
-        xPercent: -17.5,
-        transformOrigin: 'right'
-        // duration: 2
+        rotateY: -45,
+        transformOrigin: 'right',
+        duration: 2,
+        onComplete () {
+          doorFrame.value.style.pointerEvents = 'none'
+        }
       })
-      setTimeout(() => {
-        gsap.to(flash.value, {
-          opacity: 0.2,
-          duration: 3,
-          scale: 1.2,
-          transformOrigin: 'center center',
-          ease: 'none',
-          yoyo: true,
-          repeat: -1
-        })
-      }, 1500)
+      gsap.to(dooor.value, {
+        scaleX: 1,
+        transformOrigin: 'right',
+        duration: 2
+      }, '<')
     }
     const goToDoor = () => {
       router.push({
@@ -232,10 +216,6 @@ export default {
         left: '55%',
         top: '25%'
       })
-      gsap.set(flash.value, {
-        left: '54%',
-        top: '20%'
-      })
       gsap.set(top.value, {
         scaleX: 0
       })
@@ -245,8 +225,9 @@ export default {
       gsap.set([brush.value, bottom.value, left.value, handle.value], {
         opacity: 0
       })
-      gsap.set(flash.value, {
-        opacity: 0
+      gsap.set(dooor.value, {
+        scaleX: 0,
+        xPercent: 100
       })
     })
     return {
@@ -260,7 +241,7 @@ export default {
       handle,
       doorFrame,
       clickDoor,
-      flash,
+      dooor,
       play,
       open,
       goToDoor
@@ -279,10 +260,6 @@ span {
 }
 .brush {
   height: 20%;
-}
-.flash {
-  pointer-events: none;
-  height: 50%;
 }
 .open,
 .clickDoor {
