@@ -58,9 +58,6 @@ export default {
   setup () {
     onMounted(() => {
       (function () {
-        // Register the plugins to use them later
-        gsap.registerPlugin(MotionPathPlugin, Draggable)
-
         // DOM elements
         const face = document.querySelector('.dog__face')
         const butt = document.querySelector('.dog__butt')

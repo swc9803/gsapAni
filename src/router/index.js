@@ -21,6 +21,7 @@ import MatterCreateBall from '@/pages/MatterCreateBall'
 import DrawDoor from '@/pages/DrawDoor'
 import SplitText from '@/pages/SplitText'
 import Test20 from '@/pages/Test20'
+import Test21 from '@/pages/Test21'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -134,6 +135,11 @@ const router = createRouter({
       path: '/test20',
       name: 'Test20',
       component: Test20
+    },
+    {
+      path: '/test21',
+      name: 'Test21',
+      component: Test21
     }
   ]
 })
