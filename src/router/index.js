@@ -20,8 +20,9 @@ import CanvasBackground from '@/pages/CanvasBackground'
 import MatterCreateBall from '@/pages/MatterCreateBall'
 import DrawDoor from '@/pages/DrawDoor'
 import SplitText from '@/pages/SplitText'
-import Test20 from '@/pages/Test20'
-import Test21 from '@/pages/Test21'
+import Draggable from '@/pages/Draggable'
+import MotionPath from '@/pages/MotionPath'
+import Test22 from '@/pages/Test22'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -133,13 +134,18 @@ const router = createRouter({
     },
     {
       path: '/test20',
-      name: 'Test20',
-      component: Test20
+      name: 'Draggable',
+      component: Draggable
     },
     {
       path: '/test21',
-      name: 'Test21',
-      component: Test21
+      name: 'MotionPath',
+      component: MotionPath
+    },
+    {
+      path: '/test22',
+      name: 'Test22',
+      component: Test22
     }
   ]
 })
