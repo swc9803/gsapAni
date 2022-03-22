@@ -1,15 +1,17 @@
 <template>
   <!-- test3 -->
-  <img src="https://picsum.photos/600/600?random=1" alt="" class="skewElem">
-  <img src="https://picsum.photos/600/600?random=2" alt="" class="skewElem">
-  <img src="https://picsum.photos/600/600?random=3" alt="" class="skewElem">
-  <img src="https://picsum.photos/600/600?random=4" alt="" class="skewElem">
-  <img src="https://picsum.photos/600/600?random=5" alt="" class="skewElem">
-  <img src="https://picsum.photos/600/600?random=6" alt="" class="skewElem">
-  <img src="https://picsum.photos/600/600?random=7" alt="" class="skewElem">
-  <img src="https://picsum.photos/600/600?random=8" alt="" class="skewElem">
-  <img src="https://picsum.photos/600/600?random=9" alt="" class="skewElem">
-  <img src="https://picsum.photos/600/600?random=10" alt="" class="skewElem">
+  <div>
+    <img src="https://picsum.photos/600/600?random=1" alt="" class="skewElem">
+    <img src="https://picsum.photos/600/600?random=2" alt="" class="skewElem">
+    <img src="https://picsum.photos/600/600?random=3" alt="" class="skewElem">
+    <img src="https://picsum.photos/600/600?random=4" alt="" class="skewElem">
+    <img src="https://picsum.photos/600/600?random=5" alt="" class="skewElem">
+    <img src="https://picsum.photos/600/600?random=6" alt="" class="skewElem">
+    <img src="https://picsum.photos/600/600?random=7" alt="" class="skewElem">
+    <img src="https://picsum.photos/600/600?random=8" alt="" class="skewElem">
+    <img src="https://picsum.photos/600/600?random=9" alt="" class="skewElem">
+    <img src="https://picsum.photos/600/600?random=10" alt="" class="skewElem">
+  </div>
 </template>
 
 <script>
@@ -29,7 +31,6 @@ export default {
       ScrollTrigger.create({
         onUpdate: (self) => {
           const skew = clamp(self.getVelocity() / -300)
-          // only do something if the skew is MORE severe.Remember, we're always tweening back to 0, so if the user slows their scrolling quickly, it's more natural to just let the tween handle that smoothly rather than jumping to the smaller skew.
           if (Math.abs(skew) > Math.abs(proxy.skew)) {
             proxy.skew = skew
             gsap.to(proxy, {
@@ -42,7 +43,7 @@ export default {
           }
         }
       })
-      gsap.set('.skewElem', { transformOrigin: 'right center', force3D: true })
+      gsap.set('.skewElem', { transformOrigin: 'left center', force3D: true })
     })
   }
 }

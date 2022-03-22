@@ -1,6 +1,5 @@
 <template>
   <span>
-    <button @click="play">play</button>
     <svg class="open" ref="door" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 1013 1736">
       <path ref="top" fill="#fff" d="M20 20h973v91H20z"/>
       <path ref="right" fill="#fff" d="M896 20h97v1696h-97z"/>
@@ -15,7 +14,7 @@
       <path ref="dooor" fill="#5A6100" d="M25 104h73v1489H25z"/>
     </svg>
 
-    <svg class="brush" ref="brush" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 720 1035">
+    <svg @click="drawing" class="brush" ref="brush" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 720 1035">
       <path fill="url(#brush0_linear_12_20)" d="M634.64 40.43a19.24 19.24 0 0 1 32.51 20.51L370.62 577.28l-74.39-46.79L634.64 40.43Z"/>
       <path fill="url(#brush1_linear_12_20)" d="M288.79 525.81c39.82 13.87 59.5 26.24 89.27 56.15l-131.89 193.2-74.4-46.78L288.8 525.8Z"/>
       <path fill="url(#brush2_linear_12_20)" fill-opacity=".9" d="m179.48 733.22 59.25 37.26-25.4 89.92-8.83 22.6-12.42 26.99a30 30 0 0 1-5.5 8.11L174.34 931a30 30 0 0 1-7.61 5.8l-16.24 8.67-17.64 8.86c-1.56.78-3.2 1.43-4.87 1.93l-18.99 5.67-38.51 10.58-38.8 7.15a1 1 0 0 1-.96-1.6l28.62-35.29a30 30 0 0 0 6.7-18.9V896.5L67 876l2.82-16.53a30 30 0 0 1 2.3-7.46L79 837l8.31-13.8a30 30 0 0 1 4.91-6.14l87.26-83.84Z"/>
@@ -83,23 +82,15 @@ export default {
     const doorFrame = ref()
     const clickDoor = ref()
 
-    const play = () => {
+    const drawing = () => {
+      brush.value.style.pointerEvents = 'none'
       gsap.set([top.value, right.value, bottom.value, left.value], {
         opacity: 1
       })
       gsap.to(brush.value, {
-        opacity: 1,
-        duration: 1
-      })
-      gsap.from(brush.value, {
-        xPercent: 150,
-        yPercent: -80,
-        duration: 1
-      }, '<')
-      gsap.to(brush.value, {
         xPercent: 160,
         duration: 1
-      }, '>')
+      })
       gsap.to(top.value, {
         scaleX: 1,
         duration: 1
@@ -231,7 +222,7 @@ export default {
       gsap.set(right.value, {
         scaleY: 0
       })
-      gsap.set([brush.value, bottom.value, left.value, handle.value], {
+      gsap.set([bottom.value, left.value, handle.value], {
         opacity: 0
       })
       gsap.set(dooor.value, {
@@ -251,7 +242,7 @@ export default {
       doorFrame,
       clickDoor,
       dooor,
-      play,
+      drawing,
       open,
       goToDoor
     }
@@ -269,6 +260,7 @@ span {
 }
 .brush {
   height: 20%;
+  cursor: pointer;
 }
 .open,
 .clickDoor {

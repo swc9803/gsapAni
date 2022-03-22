@@ -1,102 +1,80 @@
 <template>
   <!-- test19 -->
-  <svg viewBox="0 0 476.5 103.1">
-    <path d="M47.2,90.8V19.4h23.9l5.8,1.8l6.3,3.2l4.6,7.1v6.1l-1,6.8l-4.3,6l-5.3,3.3l-8.6,2H47.5h20.4
-      l20.7,35" />
-    <path d="M111.5,44.5l7.5-4.3l6.3-1.8l6.5-0.7l5,1.8l4.3,3.9l2.8,5.8l0.3,7.8v23.9v9.6l-0.3-9.6l-4.6,3.2
-      l-5,3.6l-5.7,2.5l-6.5,1.1l-5.3-1.8l-4.3-2.9l-3.2-4.6v-6.8l2.5-5.3l5.7-4.6l5.7-2.2l6.8-2.2l6.5-1l4-0.3h3.2" />
-    <path d="M171.5,91.2V38.3v12.8l5-5l4.6-4.2l3.6-2.2l5.3-1.5l3.5-0.3l5.4,1.5l3.2,2l2.5,3.6l2.2,5v41" />
-    <path d="M270.1,11.9v78.5V79.7l-5,5.1l-6.8,4.6l-6.8,1.8l-5.7-1.1l-5.8-2.5l-5.7-6.1l-3.6-8.2l-0.7-10
-      l2.5-11.8l6.1-9l8.5-4.3l6.8-0.7l7.1,2.5l4.6,2.8l4.6,4.3" />
-    <path d="M317.2,90.8h0.3l7.1-1.8l6.8-4.6l4.2-7.2l1.8-7.8l0.3-7.5l-1-6.8l-2.5-6l-3.6-4.6l-5-4.3
-      l-5.3-1.8l-5-0.3l-5.8,1l-5.3,3.3l-4.6,5.3l-2.5,5l-2.1,7.5v5.8l0.7,6.7l1.7,6.1l4.3,5.7l5,3.9l5.4,2.1L317.2,90.8" />
-    <path d="M362.2,91.2V38.7v11.8l5-4.3l4.6-3.9l4.3-2.8l5.3-1.5l4.6,0.7l3.2,1.5l3.6,3.5l2.5,6.1l0.7,7.5
-      v33.9V51.6l1.5-2.9l7.5-6.7l5.7-2.9l4.6-1.4l5,1.4l3.3,1.8l3.9,4.6l1.8,9.3v36.1" />
-    <g id="group"></g>
-  </svg>
-  <p>Click to update the styles</p>
+  <div ref="sc" class="sc" />
+  <div class="con">
+    <svg class="goTrip" viewBox="0 0 558 120">
+      <path stroke="#000" d="m61.9 50.75 27.55-.33m-27.56.33a19.4 19.4 0 0 0-.08-.33m.08.33a22.8 22.8 0 0 1-.5 12.11m28.06-12.44H61.81m27.64 0V24L90 61.43V94.5l-.55-31.97-28.05.33m.4-12.44a17.04 17.04 0 0 0-5.16-8.47c-5.84-5.2-13.37-6.61-20.92 0-7.55 6.6-7.7 20.91 0 28.18 8.92 4.78 9.68 6.6 20.92 0 1.88-1.1 3.67-3.82 4.76-7.27"/>
+      <path stroke="#000" d="M61.33 62.9c1.32-4.5 1.52-7.17.44-12.36M112 54.5c-.5-4.5 3.84-7.4 11-8 6.28 1.24 8 4 7.5 7.5s-2.99 5.6-7.5 6.5c-6.4.62-10.5-1.5-11-6ZM121 26.5v11h-18 35.5M145.5 26v19.5m0 19.5V45.5m0 0H158V26v39M117.5 84c.5-6 6.5-9.58 16-9.5 12.16.1 16 2.5 17 9.5-1.5 6.5-6.01 7.6-17 8-10.17.81-15-1.5-16-8ZM182.06 41.91c-.75-6.7 5.77-11.01 16.54-11.91 9.44 1.84 12.03 5.96 11.28 11.17-.75 5.2-4.5 8.33-11.28 9.67-9.63.92-15.79-2.23-16.54-8.93ZM176 60h39M180.5 70H211v9.63h-29V91h31M268 47h-12v25h12M282.4 47h-12v25h12M282.4 60H298V25v69M323 41.5V72h27M360.2 27v34.25m0 34.25V61.25m0 0H378M390 81.5c5.93-13.73 7.73-22.99 9-41.5 2.45 18.64 5.8 27.82 16 41.5M416 57.5h17V29v61.5M445 26v66M473.09 48.75c-1.1-8.3 8.45-13.64 24.22-14.75 13.82 2.28 17.61 7.37 16.51 13.82-1.1 6.46-6.58 10.32-16.51 11.99-14.1 1.13-23.12-2.77-24.22-11.06ZM485 67v24.5h-24 44.5m23.5 0h-23.5m0 0V67"/>
+      <g ref="group" />
+    </svg>
+  </div>
 </template>
 
 <script>
+import { onMounted, ref } from 'vue'
 import gsap from 'gsap'
-import { onMounted } from 'vue'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
 export default {
   setup () {
+    const sc = ref()
+    const group = ref()
+    const delay = 0
     onMounted(() => {
-      console.clear()
-
-      const paths = document.querySelectorAll('path')
-      const group = document.querySelector('#group')
-      const tl = gsap.timeline({
-        onReverseComplete: () => {
-          tl.timeScale(1)
-          tl.play(0)
-        },
-        onComplete: () => {
-          tl.timeScale(1.5)
-          tl.reverse(0)
+      const items = document.querySelectorAll('.goTrip > path')
+      const sceneryTextAni = gsap.timeline()
+      ScrollTrigger.create({
+        animation: sceneryTextAni,
+        trigger: sc.value,
+        start: '1% top',
+        end: '100% 100%',
+        scrub: 2
+      })
+      items.forEach(item => {
+        const length = item.getTotalLength()
+        for (let i = 0; i < length; i += 1) {
+          const pointLength = Math.random() * length
+          const point = item.getPointAtLength(pointLength)
+          const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
+          circle.setAttribute('cx', point.x)
+          circle.setAttribute('cy', point.y)
+          circle.setAttribute('r', Math.random() * 3 + 1)
+          group.value.appendChild(circle)
+          sceneryTextAni.to(circle, {
+            cx: point.x + (Math.random() - 0.5) * 60,
+            cy: point.y + (Math.random() - 0.5) * 60,
+            opacity: 0,
+            delay: (delay + pointLength) * 0.002
+          }, 0)
         }
       })
-
-      function generatePoints () {
-        tl.clear()
-        group.innerHTML = ''
-        let delay = 0
-        paths.forEach(path => {
-          const length = path.getTotalLength()
-          for (let i = 0; i < length; i += 1) {
-            const pointLength = Math.random() * length
-            const point = path.getPointAtLength(pointLength)
-            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
-            circle.setAttribute('cx', point.x)
-            circle.setAttribute('cy', point.y)
-            circle.setAttribute('r', Math.random() * 3 + 1)
-            group.appendChild(circle)
-            tl.to(circle, {
-              autoRound: false,
-              cx: point.x + (Math.random() - 0.5) * 60,
-              cy: point.y + (Math.random() - 0.5) * 60,
-              duration: 'random(0.5, 2)',
-              delay: (delay + pointLength) * 0.002,
-              ease: 'power2.out'
-            }, 0)
-          }
-          delay += length
-        })
-        tl.reversed(false).play(0)
-      }
-      window.addEventListener('click', () => {
-        generatePoints()
-      })
-      generatePoints()
     })
+    return {
+      sc,
+      group
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-body {
-  overflow: hidden;
-  height: 100vh;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
+.sc {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 200vh;
 }
-svg {
-  overflow: visible;
-  width: 100%;
+.con {
+  // overflow: hidden;
+  width: 50%;
+  height: 100vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 path {
   opacity: 0;
 }
 
-p {
-  text-align: center;
-  padding: 0 20px;
-  position: fixed;
-  left: 0;
-  bottom: 10px;
-  width: 100%;
-  font-family: 'Varela Round', sans-serif;
-}
 </style>
