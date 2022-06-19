@@ -1,17 +1,14 @@
 <template>
-  <div>
-
-  </div>
+  <!-- test8 -->
+  <div />
 </template>
 
 <script>
-// import gsap from 'gsap'
-import { onMounted } from 'vue'
+import getBackground from '@/library/getBackground'
+
 export default {
   setup () {
-    onMounted(() => {
-
-    })
+    getBackground()
   }
 }
 </script>

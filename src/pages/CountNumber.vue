@@ -1,5 +1,5 @@
 <template>
-  <!-- test13 -->
+  <!-- test11 -->
   <div class="dd">
     <div class="info">
       <p>영양 정보</p>

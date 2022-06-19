@@ -1,7 +1,7 @@
 <template>
-<canvas class="webgl"></canvas>
-  <div class="info">
-  </div>
+  <!-- test9 -->
+  <canvas class="webgl"></canvas>
+  <div class="info" />
 </template>
 
 <script>

@@ -1,12 +1,13 @@
 <template>
-  <!-- test12 -->
+  <!-- test10 -->
   <div class="morphing">
-  <div class="word">안녕하세요</div>
-  <div class="word">전</div>
-  <div class="word">최성우</div>
-  <div class="word">ㅎㅇ</div>
-  <div class="word">ㅂㅇ</div>
-</div>
+    <div class="word">안녕하세요</div>
+    <div class="word">전</div>
+    <div class="word">최성우</div>
+    <div class="word">입니다</div>
+    <div class="word">반갑습니다</div>
+    <div class="word">잘부탁드립니다</div>
+  </div>
 </template>
 
 <script>

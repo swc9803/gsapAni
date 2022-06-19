@@ -27,15 +27,13 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background: #000;
   text-align: center;
-  z-index: -2;
-  overflow: hidden;
   h1 {
     position: relative;
-    transform: translate(0, -50%);
-    top: 50%;
+    transform: translate(0, 0);
+    // top: 50%;
     display: inline-block;
     color: rgba(0, 0, 0, 0);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -46,7 +44,7 @@ export default {
       position: absolute;
       left: 0;
       width: 100%;
-      height: 100%;
+      height: 100vh;
       z-index: -1;
       background: linear-gradient(35deg, rgba(0, 0, 0, 0) 10%, #fff 40%, rgba(0, 0, 0, 0) 90%, rgba(0, 0, 0, 0 ) 100%);
       background-size: 15px 15px;

@@ -1,5 +1,5 @@
 <template>
-  <!-- test16 -->
+  <!-- test13 -->
   <canvas id="c"></canvas>
 </template>
 
