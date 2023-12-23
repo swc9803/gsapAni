@@ -14,14 +14,14 @@ const tl: gsap.core.Timeline = gsap.timeline();
 const transition: TransitionProps = {
   name: "page",
   mode: "out-in",
-  onEnter: (el, done) => {
+  onEnter: (_, done) => {
     tl.to(".js-mask", { left: "200vw" });
     done();
   },
   onBeforeLeave: () => {
     tl.set(".js-mask", { left: "-200vw" });
   },
-  onLeave: (el, done) => {
+  onLeave: (_, done) => {
     tl.to(".js-mask", {
       left: 0,
       duration: 0.3,
@@ -40,7 +40,6 @@ $transition-mask-color: rgb(0, 59, 220);
   left: -200vw;
   width: 100vw;
   height: 100vh;
-  z-index: 9999;
   background: $transition-mask-color;
   &:before,
   &:after {
